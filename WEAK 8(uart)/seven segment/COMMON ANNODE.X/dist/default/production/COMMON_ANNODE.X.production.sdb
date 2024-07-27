@@ -1,0 +1,30 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877A ]
+[d frameptr 0 ]
+"23 D:\magesh\EMBEDDED PROGRAM\MYWORK\PIC TASK AND CLASS WORK\TASK WORK\WEAK 8\COMMON ANNODE.X\7SEG1.c
+[v _main main `(v  1 e 1 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"278 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16Fxxx_DFP/1.4.149/xc8\pic\include\proc\pic16f877a.h
+[v _PORTC PORTC `VEuc  1 e 1 @7 ]
+"1437
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"23 D:\magesh\EMBEDDED PROGRAM\MYWORK\PIC TASK AND CLASS WORK\TASK WORK\WEAK 8\COMMON ANNODE.X\7SEG1.c
+[v _main main `(v  1 e 1 0 ]
+{
+"25
+[v main@SEG SEG `[10]uc  1 a 10 0 ]
+"26
+[v main@i i `i  1 a 2 10 ]
+"24
+[v main@F1007 F1007 `[10]uc  1 s 10 F1007 ]
+"37
+} 0

@@ -1,0 +1,2646 @@
+
+
+Microchip MPLAB XC8 Assembler V2.45 build 20230818022343 
+                                                                                               Fri Jan 26 10:30:04 2024
+
+Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1 
+     1                           	processor	16F877A
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	idataBANK0,global,class=CODE,delta=2,noexec
+     5                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     6                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1,noexec
+     7                           	psect	dataBANK0,global,class=BANK0,space=1,delta=1,noexec
+     8                           	psect	bssBANK1,global,class=BANK1,space=1,delta=1,noexec
+     9                           	psect	inittext,global,class=CODE,delta=2
+    10                           	psect	clrtext,global,class=CODE,delta=2
+    11                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+    12                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1,noexec
+    13                           	psect	maintext,global,class=CODE,split=1,delta=2
+    14                           	psect	text1,local,class=CODE,merge=1,delta=2
+    15                           	psect	text2,local,class=CODE,merge=1,delta=2
+    16                           	psect	text3,local,class=CODE,merge=1,delta=2,group=1
+    17                           	psect	text4,local,class=CODE,merge=1,delta=2,group=1
+    18                           	psect	text5,local,class=CODE,merge=1,delta=2
+    19                           	psect	text6,local,class=CODE,merge=1,delta=2
+    20                           	psect	text7,local,class=CODE,merge=1,delta=2
+    21                           	psect	text8,local,class=CODE,merge=1,delta=2
+    22                           	psect	text9,local,class=CODE,merge=1,delta=2,group=1
+    23                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    24                           	dabs	1,0x7E,2
+    25     0000                     
+    26                           ; Generated 22/03/2023 GMT
+    27                           ; 
+    28                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    29                           ; All rights reserved.
+    30                           ; 
+    31                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    32                           ; 
+    33                           ; Redistribution and use in source and binary forms, with or without modification, are
+    34                           ; permitted provided that the following conditions are met:
+    35                           ; 
+    36                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    37                           ;        conditions and the following disclaimer.
+    38                           ; 
+    39                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    40                           ;        of conditions and the following disclaimer in the documentation and/or other
+    41                           ;        materials provided with the distribution. Publication is not required when
+    42                           ;        this file is used in an embedded application.
+    43                           ; 
+    44                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    45                           ;        software without specific prior written permission.
+    46                           ; 
+    47                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    48                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    49                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    50                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    51                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    52                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    53                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    54                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    55                           ; 
+    56                           ; 
+    57                           ; Code-generator required, PIC16F877A Definitions
+    58                           ; 
+    59                           ; SFR Addresses
+    60     0000                     	;# 
+    61     0001                     	;# 
+    62     0002                     	;# 
+    63     0003                     	;# 
+    64     0004                     	;# 
+    65     0005                     	;# 
+    66     0006                     	;# 
+    67     0007                     	;# 
+    68     0008                     	;# 
+    69     0009                     	;# 
+    70     000A                     	;# 
+    71     000B                     	;# 
+    72     000C                     	;# 
+    73     000D                     	;# 
+    74     000E                     	;# 
+    75     000E                     	;# 
+    76     000F                     	;# 
+    77     0010                     	;# 
+    78     0011                     	;# 
+    79     0012                     	;# 
+    80     0013                     	;# 
+    81     0014                     	;# 
+    82     0015                     	;# 
+    83     0015                     	;# 
+    84     0016                     	;# 
+    85     0017                     	;# 
+    86     0018                     	;# 
+    87     0019                     	;# 
+    88     001A                     	;# 
+    89     001B                     	;# 
+    90     001B                     	;# 
+    91     001C                     	;# 
+    92     001D                     	;# 
+    93     001E                     	;# 
+    94     001F                     	;# 
+    95     0081                     	;# 
+    96     0085                     	;# 
+    97     0086                     	;# 
+    98     0087                     	;# 
+    99     0088                     	;# 
+   100     0089                     	;# 
+   101     008C                     	;# 
+   102     008D                     	;# 
+   103     008E                     	;# 
+   104     0091                     	;# 
+   105     0092                     	;# 
+   106     0093                     	;# 
+   107     0094                     	;# 
+   108     0098                     	;# 
+   109     0099                     	;# 
+   110     009C                     	;# 
+   111     009D                     	;# 
+   112     009E                     	;# 
+   113     009F                     	;# 
+   114     010C                     	;# 
+   115     010D                     	;# 
+   116     010E                     	;# 
+   117     010F                     	;# 
+   118     018C                     	;# 
+   119     018D                     	;# 
+   120     0000                     	;# 
+   121     0001                     	;# 
+   122     0002                     	;# 
+   123     0003                     	;# 
+   124     0004                     	;# 
+   125     0005                     	;# 
+   126     0006                     	;# 
+   127     0007                     	;# 
+   128     0008                     	;# 
+   129     0009                     	;# 
+   130     000A                     	;# 
+   131     000B                     	;# 
+   132     000C                     	;# 
+   133     000D                     	;# 
+   134     000E                     	;# 
+   135     000E                     	;# 
+   136     000F                     	;# 
+   137     0010                     	;# 
+   138     0011                     	;# 
+   139     0012                     	;# 
+   140     0013                     	;# 
+   141     0014                     	;# 
+   142     0015                     	;# 
+   143     0015                     	;# 
+   144     0016                     	;# 
+   145     0017                     	;# 
+   146     0018                     	;# 
+   147     0019                     	;# 
+   148     001A                     	;# 
+   149     001B                     	;# 
+   150     001B                     	;# 
+   151     001C                     	;# 
+   152     001D                     	;# 
+   153     001E                     	;# 
+   154     001F                     	;# 
+   155     0081                     	;# 
+   156     0085                     	;# 
+   157     0086                     	;# 
+   158     0087                     	;# 
+   159     0088                     	;# 
+   160     0089                     	;# 
+   161     008C                     	;# 
+   162     008D                     	;# 
+   163     008E                     	;# 
+   164     0091                     	;# 
+   165     0092                     	;# 
+   166     0093                     	;# 
+   167     0094                     	;# 
+   168     0098                     	;# 
+   169     0099                     	;# 
+   170     009C                     	;# 
+   171     009D                     	;# 
+   172     009E                     	;# 
+   173     009F                     	;# 
+   174     010C                     	;# 
+   175     010D                     	;# 
+   176     010E                     	;# 
+   177     010F                     	;# 
+   178     018C                     	;# 
+   179     018D                     	;# 
+   180                           
+   181                           	psect	idataBANK0
+   182     0304                     __pidataBANK0:
+   183                           
+   184                           ;initializer for _b
+   185     0304  3443               	retlw	67
+   186     0305  3448               	retlw	72
+   187     0306  3441               	retlw	65
+   188     0307  344E               	retlw	78
+   189     0308  344E               	retlw	78
+   190     0309  3445               	retlw	69
+   191     030A  344C               	retlw	76
+   192     030B  3420               	retlw	32
+   193     030C  3431               	retlw	49
+   194     030D  343A               	retlw	58
+   195                           
+   196                           ;initializer for _a
+   197     030E  3443               	retlw	67
+   198     030F  3448               	retlw	72
+   199     0310  3441               	retlw	65
+   200     0311  344E               	retlw	78
+   201     0312  344E               	retlw	78
+   202     0313  3445               	retlw	69
+   203     0314  344C               	retlw	76
+   204     0315  3420               	retlw	32
+   205     0316  3430               	retlw	48
+   206     0317  343A               	retlw	58
+   207     0008                     _PORTD	set	8
+   208     0007                     _PORTC	set	7
+   209     0012                     _T2CON	set	18
+   210     0017                     _CCP1CON	set	23
+   211     0015                     _CCPR1L	set	21
+   212     001E                     _ADRESH	set	30
+   213     001F                     _ADCON0	set	31
+   214     0092                     _PR2	set	146
+   215     009F                     _ADCON1	set	159
+   216     0088                     _TRISD	set	136
+   217     0087                     _TRISC	set	135
+   218     0085                     _TRISA	set	133
+   219     009E                     _ADRESL	set	158
+   220                           
+   221                           	psect	cinit
+   222     07DE                     start_initialization:	
+   223                           ; #config settings
+   224                           
+   225     07DE                     __initialization:
+   226                           
+   227                           ; Initialize objects allocated to BANK0
+   228     07DE  1383               	bcf	3,7	;select IRP bank0
+   229     07DF  306B               	movlw	low (__pdataBANK0+20)
+   230     07E0  00FD               	movwf	btemp+-1
+   231     07E1  3003               	movlw	high __pidataBANK0
+   232     07E2  00FE               	movwf	btemp
+   233     07E3  3004               	movlw	low __pidataBANK0
+   234     07E4  00FF               	movwf	btemp+1
+   235     07E5  3057               	movlw	low __pdataBANK0
+   236     07E6  0084               	movwf	4
+   237     07E7  120A  118A  22F5  120A  118A  	fcall	init_ram0
+   238                           
+   239                           ; Clear objects allocated to BANK1
+   240     07EC  30A0               	movlw	low __pbssBANK1
+   241     07ED  0084               	movwf	4
+   242     07EE  30AA               	movlw	low (__pbssBANK1+10)
+   243     07EF  120A  118A  22DC  120A  118A  	fcall	clear_ram0
+   244                           
+   245                           ; Clear objects allocated to BANK0
+   246     07F4  3020               	movlw	low __pbssBANK0
+   247     07F5  0084               	movwf	4
+   248     07F6  303E               	movlw	low (__pbssBANK0+30)
+   249     07F7  120A  118A  22DC  120A  118A  	fcall	clear_ram0
+   250     07FC                     end_of_initialization:	
+   251                           ;End of C runtime variable initialization code
+   252                           
+   253     07FC                     __end_of__initialization:
+   254     07FC  0183               	clrf	3
+   255     07FD  120A  118A  2E16   	ljmp	_main	;jump to C main() function
+   256                           
+   257                           	psect	bssBANK0
+   258     0020                     __pbssBANK0:
+   259     0020                     _voltage:
+   260     0020                     	ds	4
+   261     0024                     _value:
+   262     0024                     	ds	4
+   263     0028                     _o:
+   264     0028                     	ds	4
+   265     002C                     _l:
+   266     002C                     	ds	4
+   267     0030                     _c:
+   268     0030                     	ds	2
+   269     0032                     _fr:
+   270     0032                     	ds	2
+   271     0034                     _delaycount:
+   272     0034                     	ds	2
+   273     0036                     _m:
+   274     0036                     	ds	2
+   275     0038                     _highvalue:
+   276     0038                     	ds	2
+   277     003A                     _lowvalue:
+   278     003A                     	ds	2
+   279     003C                     _j:
+   280     003C                     	ds	1
+   281     003D                     _n:
+   282     003D                     	ds	1
+   283                           
+   284                           	psect	dataBANK0
+   285     0057                     __pdataBANK0:
+   286     0057                     _b:
+   287     0057                     	ds	10
+   288     0061                     _a:
+   289     0061                     	ds	10
+   290                           
+   291                           	psect	bssBANK1
+   292     00A0                     __pbssBANK1:
+   293     00A0                     _k:
+   294     00A0                     	ds	10
+   295                           
+   296                           	psect	inittext
+   297     02F1                     init_fetch0:	
+   298                           ;	Called with low address in FSR and high address in W
+   299                           
+   300     02F1  087E               	movf	btemp,w
+   301     02F2  008A               	movwf	10
+   302     02F3  087F               	movf	btemp+1,w
+   303     02F4  0082               	movwf	2
+   304     02F5                     init_ram0:	
+   305                           ;Called with:
+   306                           ;	high address of idata address in btemp 
+   307                           ;	low address of idata address in btemp+1 
+   308                           ;	low address of data in FSR
+   309                           ;	high address + 1 of data in btemp-1
+   310                           
+   311     02F5  120A  118A  22F1  120A  118A  	fcall	init_fetch0
+   312     02FA  0080               	movwf	0
+   313     02FB  0A84               	incf	4,f
+   314     02FC  0804               	movf	4,w
+   315     02FD  067D               	xorwf	btemp+-1,w
+   316     02FE  1903               	btfsc	3,2
+   317     02FF  3400               	retlw	0
+   318     0300  0AFF               	incf	btemp+1,f
+   319     0301  1903               	btfsc	3,2
+   320     0302  0AFE               	incf	btemp,f
+   321     0303  2AF5               	goto	init_ram0
+   322                           
+   323                           	psect	clrtext
+   324     02DC                     clear_ram0:	
+   325                           ;	Called with FSR containing the base address, and
+   326                           ;	W with the last address+1
+   327                           
+   328     02DC  0064               	clrwdt	;clear the watchdog before getting into this loop
+   329     02DD                     clrloop0:
+   330     02DD  0180               	clrf	0	;clear RAM location pointed to by FSR
+   331     02DE  0A84               	incf	4,f	;increment pointer
+   332     02DF  0604               	xorwf	4,w	;XOR with final address
+   333     02E0  1903               	btfsc	3,2	;have we reached the end yet?
+   334     02E1  3400               	retlw	0	;all done for this memory range, return
+   335     02E2  0604               	xorwf	4,w	;XOR again to restore value
+   336     02E3  2ADD               	goto	clrloop0	;do the next byte
+   337                           
+   338                           	psect	cstackCOMMON
+   339     0070                     __pcstackCOMMON:
+   340     0070                     ?_init:
+   341     0070                     ?_lcdcmd:	
+   342                           ; 1 bytes @ 0x0
+   343                           
+   344     0070                     ?_lcddata:	
+   345                           ; 1 bytes @ 0x0
+   346                           
+   347     0070                     ?_delay:	
+   348                           ; 1 bytes @ 0x0
+   349                           
+   350     0070                     ?_main:	
+   351                           ; 1 bytes @ 0x0
+   352                           
+   353     0070                     ?___lmul:	
+   354                           ; 1 bytes @ 0x0
+   355                           
+   356     0070                     ?___llmod:	
+   357                           ; 4 bytes @ 0x0
+   358                           
+   359     0070                     delay@delaycount:	
+   360                           ; 4 bytes @ 0x0
+   361                           
+   362     0070                     ___lmul@multiplier:	
+   363                           ; 2 bytes @ 0x0
+   364                           
+   365     0070                     ___llmod@divisor:	
+   366                           ; 4 bytes @ 0x0
+   367                           
+   368                           
+   369                           ; 4 bytes @ 0x0
+   370     0070                     	ds	2
+   371     0072                     ??_lcdcmd:
+   372     0072                     ??_lcddata:	
+   373                           ; 1 bytes @ 0x2
+   374                           
+   375     0072                     ??_delay:	
+   376                           ; 1 bytes @ 0x2
+   377                           
+   378     0072                     lcdcmd@i:	
+   379                           ; 1 bytes @ 0x2
+   380                           
+   381     0072                     lcddata@i:	
+   382                           ; 1 bytes @ 0x2
+   383                           
+   384                           
+   385                           ; 1 bytes @ 0x2
+   386     0072                     	ds	1
+   387     0073                     ??_init:
+   388                           
+   389                           ; 1 bytes @ 0x3
+   390     0073                     	ds	1
+   391     0074                     ___lmul@multiplicand:
+   392     0074                     ___llmod@dividend:	
+   393                           ; 4 bytes @ 0x4
+   394                           
+   395                           
+   396                           ; 4 bytes @ 0x4
+   397     0074                     	ds	4
+   398     0078                     ??___lmul:
+   399     0078                     ??___llmod:	
+   400                           ; 1 bytes @ 0x8
+   401                           
+   402                           
+   403                           ; 1 bytes @ 0x8
+   404     0078                     	ds	1
+   405     0079                     ___llmod@counter:
+   406     0079                     ___lmul@product:	
+   407                           ; 1 bytes @ 0x9
+   408                           
+   409                           
+   410                           ; 4 bytes @ 0x9
+   411     0079                     	ds	4
+   412     007D                     ??___lldiv:
+   413                           
+   414                           ; 1 bytes @ 0xD
+   415     007D                     	ds	1
+   416     007E                     ??_lcdoutput1:
+   417     007E                     ??_lcdoutput2:	
+   418                           ; 1 bytes @ 0xE
+   419                           
+   420                           
+   421                           	psect	cstackBANK0
+   422     003E                     __pcstackBANK0:	
+   423                           ; 1 bytes @ 0xE
+   424                           
+   425     003E                     ?___lldiv:
+   426     003E                     ___lldiv@divisor:	
+   427                           ; 4 bytes @ 0x0
+   428                           
+   429                           
+   430                           ; 4 bytes @ 0x0
+   431     003E                     	ds	4
+   432     0042                     ___lldiv@dividend:
+   433                           
+   434                           ; 4 bytes @ 0x4
+   435     0042                     	ds	4
+   436     0046                     ___lldiv@quotient:
+   437                           
+   438                           ; 4 bytes @ 0x8
+   439     0046                     	ds	4
+   440     004A                     ___lldiv@counter:
+   441                           
+   442                           ; 1 bytes @ 0xC
+   443     004A                     	ds	1
+   444     004B                     ?_lcdoutput1:
+   445     004B                     ?_lcdoutput2:	
+   446                           ; 1 bytes @ 0xD
+   447                           
+   448     004B                     lcdoutput1@i:	
+   449                           ; 1 bytes @ 0xD
+   450                           
+   451     004B                     lcdoutput2@i:	
+   452                           ; 4 bytes @ 0xD
+   453                           
+   454                           
+   455                           ; 4 bytes @ 0xD
+   456     004B                     	ds	4
+   457     004F                     ??_main:
+   458                           
+   459                           ; 1 bytes @ 0x11
+   460     004F                     	ds	8
+   461                           
+   462                           	psect	maintext
+   463     0616                     __pmaintext:	
+   464 ;;
+   465 ;;Main: autosize = 0, tempsize = 8, incstack = 0, save=0
+   466 ;;
+   467 ;; *************** function _main *****************
+   468 ;; Defined at:
+   469 ;;		line 33 in file "taskadcpwm.c"
+   470 ;; Parameters:    Size  Location     Type
+   471 ;;		None
+   472 ;; Auto vars:     Size  Location     Type
+   473 ;;		None
+   474 ;; Return value:  Size  Location     Type
+   475 ;;                  1    wreg      void 
+   476 ;; Registers used:
+   477 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+   478 ;; Tracked objects:
+   479 ;;		On entry : B00/0
+   480 ;;		On exit  : 0/0
+   481 ;;		Unchanged: 0/0
+   482 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   483 ;;      Params:         0       0       0       0       0
+   484 ;;      Locals:         0       0       0       0       0
+   485 ;;      Temps:          0       8       0       0       0
+   486 ;;      Totals:         0       8       0       0       0
+   487 ;;Total ram usage:        8 bytes
+   488 ;; Hardware stack levels required when called: 3
+   489 ;; This function calls:
+   490 ;;		___lldiv
+   491 ;;		___lmul
+   492 ;;		_delay
+   493 ;;		_init
+   494 ;;		_lcdcmd
+   495 ;;		_lcddata
+   496 ;;		_lcdoutput1
+   497 ;;		_lcdoutput2
+   498 ;; This function is called by:
+   499 ;;		Startup code after reset
+   500 ;; This function uses a non-reentrant model
+   501 ;;
+   502                           
+   503     0616                     _main:	
+   504                           ;psect for function _main
+   505                           
+   506     0616                     l1031:	
+   507                           ;incstack = 0
+   508                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+   509                           
+   510                           
+   511                           ;taskadcpwm.c: 35:     init();
+   512     0616  120A  118A  238B  120A  118A  	fcall	_init
+   513     061B                     l1033:
+   514                           
+   515                           ;taskadcpwm.c: 37:     {;taskadcpwm.c: 38:         ADCON0&=0xC7;
+   516     061B  30C7               	movlw	199
+   517     061C  00FF               	movwf	btemp+1
+   518     061D  087F               	movf	btemp+1,w
+   519     061E  1283               	bcf	3,5	;RP0=0, select bank0
+   520     061F  1303               	bcf	3,6	;RP1=0, select bank0
+   521     0620  059F               	andwf	31,f	;volatile
+   522     0621                     l1035:
+   523                           
+   524                           ;taskadcpwm.c: 39:         ADCON0|=0x04;
+   525     0621  151F               	bsf	31,2	;volatile
+   526     0622                     l74:	
+   527                           ;taskadcpwm.c: 40:         while(ADCON0&0x04);
+   528                           
+   529     0622  191F               	btfsc	31,2	;volatile
+   530     0623  2E25               	goto	u651
+   531     0624  2E26               	goto	u650
+   532     0625                     u651:
+   533     0625  2E22               	goto	l74
+   534     0626                     u650:
+   535     0626                     l1037:
+   536                           
+   537                           ;taskadcpwm.c: 41:         lowvalue=ADRESL;
+   538     0626  1683               	bsf	3,5	;RP0=1, select bank1
+   539     0627  1303               	bcf	3,6	;RP1=0, select bank1
+   540     0628  081E               	movf	30,w	;volatile
+   541     0629  1283               	bcf	3,5	;RP0=0, select bank0
+   542     062A  1303               	bcf	3,6	;RP1=0, select bank0
+   543     062B  00CF               	movwf	??_main
+   544     062C  01D0               	clrf	??_main+1
+   545     062D  084F               	movf	??_main,w
+   546     062E  00BA               	movwf	_lowvalue
+   547     062F  0850               	movf	??_main+1,w
+   548     0630  00BB               	movwf	_lowvalue+1
+   549                           
+   550                           ;taskadcpwm.c: 42:         highvalue=ADRESH;
+   551     0631  081E               	movf	30,w	;volatile
+   552     0632  00CF               	movwf	??_main
+   553     0633  01D0               	clrf	??_main+1
+   554     0634  084F               	movf	??_main,w
+   555     0635  00B8               	movwf	_highvalue
+   556     0636  0850               	movf	??_main+1,w
+   557     0637  00B9               	movwf	_highvalue+1
+   558     0638                     l1039:
+   559                           
+   560                           ;taskadcpwm.c: 43:         value=((unsigned long)highvalue<<8)+(unsigned long)lowvalue;
+   561     0638  083A               	movf	_lowvalue,w
+   562     0639  00CF               	movwf	??_main
+   563     063A  083B               	movf	_lowvalue+1,w
+   564     063B  00D0               	movwf	??_main+1
+   565     063C  01D1               	clrf	??_main+2
+   566     063D  01D2               	clrf	??_main+3
+   567     063E  0838               	movf	_highvalue,w
+   568     063F  00D3               	movwf	??_main+4
+   569     0640  0839               	movf	_highvalue+1,w
+   570     0641  00D4               	movwf	??_main+5
+   571     0642  01D5               	clrf	??_main+6
+   572     0643  01D6               	clrf	??_main+7
+   573     0644  3008               	movlw	8
+   574     0645                     u665:
+   575     0645  1003               	clrc
+   576     0646  0DD3               	rlf	??_main+4,f
+   577     0647  0DD4               	rlf	??_main+5,f
+   578     0648  0DD5               	rlf	??_main+6,f
+   579     0649  0DD6               	rlf	??_main+7,f
+   580     064A                     u660:
+   581     064A  3EFF               	addlw	-1
+   582     064B  1D03               	skipz
+   583     064C  2E45               	goto	u665
+   584     064D  0853               	movf	??_main+4,w
+   585     064E  07CF               	addwf	??_main,f
+   586     064F  0854               	movf	??_main+5,w
+   587     0650  1803               	skipnc
+   588     0651  0F54               	incfsz	??_main+5,w
+   589     0652  2E54               	goto	u670
+   590     0653  2E55               	goto	u671
+   591     0654                     u670:
+   592     0654  07D0               	addwf	??_main+1,f
+   593     0655                     u671:
+   594     0655  0855               	movf	??_main+6,w
+   595     0656  1803               	skipnc
+   596     0657  0F55               	incfsz	??_main+6,w
+   597     0658  2E5A               	goto	u672
+   598     0659  2E5B               	goto	u673
+   599     065A                     u672:
+   600     065A  07D1               	addwf	??_main+2,f
+   601     065B                     u673:
+   602     065B  0856               	movf	??_main+7,w
+   603     065C  1803               	skipnc
+   604     065D  0A56               	incf	??_main+7,w
+   605     065E  07D2               	addwf	??_main+3,f
+   606     065F  0852               	movf	??_main+3,w
+   607     0660  00A7               	movwf	_value+3
+   608     0661  0851               	movf	??_main+2,w
+   609     0662  00A6               	movwf	_value+2
+   610     0663  0850               	movf	??_main+1,w
+   611     0664  00A5               	movwf	_value+1
+   612     0665  084F               	movf	??_main,w
+   613     0666  00A4               	movwf	_value
+   614     0667                     l1041:
+   615                           
+   616                           ;taskadcpwm.c: 44:         lcdcmd(0x80);
+   617     0667  3080               	movlw	128
+   618     0668  120A  118A  232D  120A  118A  	fcall	_lcdcmd
+   619     066D                     l1043:
+   620                           
+   621                           ;taskadcpwm.c: 45:         for(fr=0;fr!=10;fr++)
+   622     066D  1283               	bcf	3,5	;RP0=0, select bank0
+   623     066E  1303               	bcf	3,6	;RP1=0, select bank0
+   624     066F  01B2               	clrf	_fr
+   625     0670  01B3               	clrf	_fr+1
+   626     0671                     l1049:
+   627                           
+   628                           ;taskadcpwm.c: 46:         {;taskadcpwm.c: 47:             lcddata(a[fr]);
+   629     0671  0832               	movf	_fr,w
+   630     0672  3E61               	addlw	(low (_a| 0))& (0+255)
+   631     0673  0084               	movwf	4
+   632     0674  1383               	bcf	3,7	;select IRP bank0
+   633     0675  0800               	movf	0,w
+   634     0676  120A  118A  2318  120A  118A  	fcall	_lcddata
+   635     067B                     l1051:
+   636                           
+   637                           ;taskadcpwm.c: 48:         }
+   638     067B  3001               	movlw	1
+   639     067C  1283               	bcf	3,5	;RP0=0, select bank0
+   640     067D  1303               	bcf	3,6	;RP1=0, select bank0
+   641     067E  07B2               	addwf	_fr,f
+   642     067F  1803               	skipnc
+   643     0680  0AB3               	incf	_fr+1,f
+   644     0681  3000               	movlw	0
+   645     0682  07B3               	addwf	_fr+1,f
+   646     0683                     l1053:
+   647     0683  300A               	movlw	10
+   648     0684  0632               	xorwf	_fr,w
+   649     0685  0433               	iorwf	_fr+1,w
+   650     0686  1D03               	btfss	3,2
+   651     0687  2E89               	goto	u681
+   652     0688  2E8A               	goto	u680
+   653     0689                     u681:
+   654     0689  2E71               	goto	l1049
+   655     068A                     u680:
+   656     068A                     l1055:
+   657                           
+   658                           ;taskadcpwm.c: 49:         lcdoutput1(value);
+   659     068A  0827               	movf	_value+3,w
+   660     068B  00CE               	movwf	lcdoutput1@i+3
+   661     068C  0826               	movf	_value+2,w
+   662     068D  00CD               	movwf	lcdoutput1@i+2
+   663     068E  0825               	movf	_value+1,w
+   664     068F  00CC               	movwf	lcdoutput1@i+1
+   665     0690  0824               	movf	_value,w
+   666     0691  00CB               	movwf	lcdoutput1@i
+   667     0692  120A  118A  2492  120A  118A  	fcall	_lcdoutput1
+   668     0697                     l1057:
+   669                           
+   670                           ;taskadcpwm.c: 50:         for(fr=0;fr!=4;fr++)
+   671     0697  1283               	bcf	3,5	;RP0=0, select bank0
+   672     0698  1303               	bcf	3,6	;RP1=0, select bank0
+   673     0699  01B2               	clrf	_fr
+   674     069A  01B3               	clrf	_fr+1
+   675     069B                     l1063:
+   676                           
+   677                           ;taskadcpwm.c: 51:         {;taskadcpwm.c: 52:             if(l[fr]==' ')
+   678     069B  0832               	movf	_fr,w
+   679     069C  3E2C               	addlw	(low (_l| 0))& (0+255)
+   680     069D  0084               	movwf	4
+   681     069E  3020               	movlw	32
+   682     069F  1383               	bcf	3,7	;select IRP bank0
+   683     06A0  0600               	xorwf	0,w
+   684     06A1  1D03               	btfss	3,2
+   685     06A2  2EA4               	goto	u691
+   686     06A3  2EA5               	goto	u690
+   687     06A4                     u691:
+   688     06A4  2EAF               	goto	l1067
+   689     06A5                     u690:
+   690     06A5                     l1065:
+   691                           
+   692                           ;taskadcpwm.c: 53:                 lcddata(l[fr]);
+   693     06A5  0832               	movf	_fr,w
+   694     06A6  3E2C               	addlw	(low (_l| 0))& (0+255)
+   695     06A7  0084               	movwf	4
+   696     06A8  0800               	movf	0,w
+   697     06A9  120A  118A  2318  120A  118A  	fcall	_lcddata
+   698     06AE  2EB9               	goto	l1069
+   699     06AF                     l1067:
+   700                           
+   701                           ;taskadcpwm.c: 55:                 lcddata((0x30)+l[fr]);
+   702     06AF  0832               	movf	_fr,w
+   703     06B0  3E2C               	addlw	(low (_l| 0))& (0+255)
+   704     06B1  0084               	movwf	4
+   705     06B2  0800               	movf	0,w
+   706     06B3  3E30               	addlw	48
+   707     06B4  120A  118A  2318  120A  118A  	fcall	_lcddata
+   708     06B9                     l1069:
+   709                           
+   710                           ;taskadcpwm.c: 56:         }
+   711     06B9  3001               	movlw	1
+   712     06BA  1283               	bcf	3,5	;RP0=0, select bank0
+   713     06BB  1303               	bcf	3,6	;RP1=0, select bank0
+   714     06BC  07B2               	addwf	_fr,f
+   715     06BD  1803               	skipnc
+   716     06BE  0AB3               	incf	_fr+1,f
+   717     06BF  3000               	movlw	0
+   718     06C0  07B3               	addwf	_fr+1,f
+   719     06C1                     l1071:
+   720     06C1  3004               	movlw	4
+   721     06C2  0632               	xorwf	_fr,w
+   722     06C3  0433               	iorwf	_fr+1,w
+   723     06C4  1D03               	btfss	3,2
+   724     06C5  2EC7               	goto	u701
+   725     06C6  2EC8               	goto	u700
+   726     06C7                     u701:
+   727     06C7  2E9B               	goto	l1063
+   728     06C8                     u700:
+   729     06C8                     l1073:
+   730                           
+   731                           ;taskadcpwm.c: 57:         delay(1000);
+   732     06C8  30E8               	movlw	232
+   733     06C9  00F0               	movwf	delay@delaycount
+   734     06CA  3003               	movlw	3
+   735     06CB  00F1               	movwf	delay@delaycount+1
+   736     06CC  120A  118A  22E4  120A  118A  	fcall	_delay
+   737     06D1                     l1075:
+   738                           
+   739                           ;taskadcpwm.c: 59:         ADCON0|=0x10;
+   740     06D1  1283               	bcf	3,5	;RP0=0, select bank0
+   741     06D2  1303               	bcf	3,6	;RP1=0, select bank0
+   742     06D3  161F               	bsf	31,4	;volatile
+   743     06D4                     l1077:
+   744                           
+   745                           ;taskadcpwm.c: 60:         ADCON0|=0x04;
+   746     06D4  151F               	bsf	31,2	;volatile
+   747     06D5                     l83:	
+   748                           ;taskadcpwm.c: 61:         while(ADCON0&0x04);
+   749                           
+   750     06D5  191F               	btfsc	31,2	;volatile
+   751     06D6  2ED8               	goto	u711
+   752     06D7  2ED9               	goto	u710
+   753     06D8                     u711:
+   754     06D8  2ED5               	goto	l83
+   755     06D9                     u710:
+   756     06D9                     l1079:
+   757                           
+   758                           ;taskadcpwm.c: 62:         lowvalue=ADRESL;
+   759     06D9  1683               	bsf	3,5	;RP0=1, select bank1
+   760     06DA  1303               	bcf	3,6	;RP1=0, select bank1
+   761     06DB  081E               	movf	30,w	;volatile
+   762     06DC  1283               	bcf	3,5	;RP0=0, select bank0
+   763     06DD  1303               	bcf	3,6	;RP1=0, select bank0
+   764     06DE  00CF               	movwf	??_main
+   765     06DF  01D0               	clrf	??_main+1
+   766     06E0  084F               	movf	??_main,w
+   767     06E1  00BA               	movwf	_lowvalue
+   768     06E2  0850               	movf	??_main+1,w
+   769     06E3  00BB               	movwf	_lowvalue+1
+   770                           
+   771                           ;taskadcpwm.c: 63:         highvalue=ADRESH;
+   772     06E4  081E               	movf	30,w	;volatile
+   773     06E5  00CF               	movwf	??_main
+   774     06E6  01D0               	clrf	??_main+1
+   775     06E7  084F               	movf	??_main,w
+   776     06E8  00B8               	movwf	_highvalue
+   777     06E9  0850               	movf	??_main+1,w
+   778     06EA  00B9               	movwf	_highvalue+1
+   779     06EB                     l1081:
+   780                           
+   781                           ;taskadcpwm.c: 64:         value=((unsigned long)highvalue<<8)+(unsigned long)lowvalue;
+   782     06EB  083A               	movf	_lowvalue,w
+   783     06EC  00CF               	movwf	??_main
+   784     06ED  083B               	movf	_lowvalue+1,w
+   785     06EE  00D0               	movwf	??_main+1
+   786     06EF  01D1               	clrf	??_main+2
+   787     06F0  01D2               	clrf	??_main+3
+   788     06F1  0838               	movf	_highvalue,w
+   789     06F2  00D3               	movwf	??_main+4
+   790     06F3  0839               	movf	_highvalue+1,w
+   791     06F4  00D4               	movwf	??_main+5
+   792     06F5  01D5               	clrf	??_main+6
+   793     06F6  01D6               	clrf	??_main+7
+   794     06F7  3008               	movlw	8
+   795     06F8                     u725:
+   796     06F8  1003               	clrc
+   797     06F9  0DD3               	rlf	??_main+4,f
+   798     06FA  0DD4               	rlf	??_main+5,f
+   799     06FB  0DD5               	rlf	??_main+6,f
+   800     06FC  0DD6               	rlf	??_main+7,f
+   801     06FD                     u720:
+   802     06FD  3EFF               	addlw	-1
+   803     06FE  1D03               	skipz
+   804     06FF  2EF8               	goto	u725
+   805     0700  0853               	movf	??_main+4,w
+   806     0701  07CF               	addwf	??_main,f
+   807     0702  0854               	movf	??_main+5,w
+   808     0703  1803               	skipnc
+   809     0704  0F54               	incfsz	??_main+5,w
+   810     0705  2F07               	goto	u730
+   811     0706  2F08               	goto	u731
+   812     0707                     u730:
+   813     0707  07D0               	addwf	??_main+1,f
+   814     0708                     u731:
+   815     0708  0855               	movf	??_main+6,w
+   816     0709  1803               	skipnc
+   817     070A  0F55               	incfsz	??_main+6,w
+   818     070B  2F0D               	goto	u732
+   819     070C  2F0E               	goto	u733
+   820     070D                     u732:
+   821     070D  07D1               	addwf	??_main+2,f
+   822     070E                     u733:
+   823     070E  0856               	movf	??_main+7,w
+   824     070F  1803               	skipnc
+   825     0710  0A56               	incf	??_main+7,w
+   826     0711  07D2               	addwf	??_main+3,f
+   827     0712  0852               	movf	??_main+3,w
+   828     0713  00A7               	movwf	_value+3
+   829     0714  0851               	movf	??_main+2,w
+   830     0715  00A6               	movwf	_value+2
+   831     0716  0850               	movf	??_main+1,w
+   832     0717  00A5               	movwf	_value+1
+   833     0718  084F               	movf	??_main,w
+   834     0719  00A4               	movwf	_value
+   835     071A                     l1083:
+   836                           
+   837                           ;taskadcpwm.c: 65:         lcdcmd(0xC0);
+   838     071A  30C0               	movlw	192
+   839     071B  120A  118A  232D  120A  118A  	fcall	_lcdcmd
+   840     0720                     l1085:
+   841                           
+   842                           ;taskadcpwm.c: 66:         for(fr=0;fr!=10;fr++)
+   843     0720  1283               	bcf	3,5	;RP0=0, select bank0
+   844     0721  1303               	bcf	3,6	;RP1=0, select bank0
+   845     0722  01B2               	clrf	_fr
+   846     0723  01B3               	clrf	_fr+1
+   847     0724                     l1091:
+   848                           
+   849                           ;taskadcpwm.c: 67:         {;taskadcpwm.c: 68:             lcddata(b[fr]);
+   850     0724  0832               	movf	_fr,w
+   851     0725  3E57               	addlw	(low (_b| 0))& (0+255)
+   852     0726  0084               	movwf	4
+   853     0727  1383               	bcf	3,7	;select IRP bank0
+   854     0728  0800               	movf	0,w
+   855     0729  120A  118A  2318  120A  118A  	fcall	_lcddata
+   856     072E                     l1093:
+   857                           
+   858                           ;taskadcpwm.c: 69:         }
+   859     072E  3001               	movlw	1
+   860     072F  1283               	bcf	3,5	;RP0=0, select bank0
+   861     0730  1303               	bcf	3,6	;RP1=0, select bank0
+   862     0731  07B2               	addwf	_fr,f
+   863     0732  1803               	skipnc
+   864     0733  0AB3               	incf	_fr+1,f
+   865     0734  3000               	movlw	0
+   866     0735  07B3               	addwf	_fr+1,f
+   867     0736                     l1095:
+   868     0736  300A               	movlw	10
+   869     0737  0632               	xorwf	_fr,w
+   870     0738  0433               	iorwf	_fr+1,w
+   871     0739  1D03               	btfss	3,2
+   872     073A  2F3C               	goto	u741
+   873     073B  2F3D               	goto	u740
+   874     073C                     u741:
+   875     073C  2F24               	goto	l1091
+   876     073D                     u740:
+   877     073D                     l1097:
+   878                           
+   879                           ;taskadcpwm.c: 70:         voltage=value*337/1023;
+   880     073D  3000               	movlw	0
+   881     073E  00C1               	movwf	___lldiv@divisor+3
+   882     073F  3000               	movlw	0
+   883     0740  00C0               	movwf	___lldiv@divisor+2
+   884     0741  3003               	movlw	3
+   885     0742  00BF               	movwf	___lldiv@divisor+1
+   886     0743  30FF               	movlw	255
+   887     0744  00BE               	movwf	___lldiv@divisor
+   888     0745  0827               	movf	_value+3,w
+   889     0746  00F3               	movwf	___lmul@multiplier+3
+   890     0747  0826               	movf	_value+2,w
+   891     0748  00F2               	movwf	___lmul@multiplier+2
+   892     0749  0825               	movf	_value+1,w
+   893     074A  00F1               	movwf	___lmul@multiplier+1
+   894     074B  0824               	movf	_value,w
+   895     074C  00F0               	movwf	___lmul@multiplier
+   896     074D  3000               	movlw	0
+   897     074E  00F7               	movwf	___lmul@multiplicand+3
+   898     074F  3000               	movlw	0
+   899     0750  00F6               	movwf	___lmul@multiplicand+2
+   900     0751  3001               	movlw	1
+   901     0752  00F5               	movwf	___lmul@multiplicand+1
+   902     0753  3051               	movlw	81
+   903     0754  00F4               	movwf	___lmul@multiplicand
+   904     0755  120A  118A  2345  120A  118A  	fcall	___lmul
+   905     075A  0873               	movf	?___lmul+3,w
+   906     075B  1283               	bcf	3,5	;RP0=0, select bank0
+   907     075C  1303               	bcf	3,6	;RP1=0, select bank0
+   908     075D  00C5               	movwf	___lldiv@dividend+3
+   909     075E  0872               	movf	?___lmul+2,w
+   910     075F  00C4               	movwf	___lldiv@dividend+2
+   911     0760  0871               	movf	?___lmul+1,w
+   912     0761  00C3               	movwf	___lldiv@dividend+1
+   913     0762  0870               	movf	?___lmul,w
+   914     0763  00C2               	movwf	___lldiv@dividend
+   915     0764  120A  118A  242A  120A  118A  	fcall	___lldiv
+   916     0769  1283               	bcf	3,5	;RP0=0, select bank0
+   917     076A  1303               	bcf	3,6	;RP1=0, select bank0
+   918     076B  0841               	movf	?___lldiv+3,w
+   919     076C  00A3               	movwf	_voltage+3
+   920     076D  0840               	movf	?___lldiv+2,w
+   921     076E  00A2               	movwf	_voltage+2
+   922     076F  083F               	movf	?___lldiv+1,w
+   923     0770  00A1               	movwf	_voltage+1
+   924     0771  083E               	movf	?___lldiv,w
+   925     0772  00A0               	movwf	_voltage
+   926                           
+   927                           ;taskadcpwm.c: 71:         lcdoutput2(voltage);
+   928     0773  0823               	movf	_voltage+3,w
+   929     0774  00CE               	movwf	lcdoutput2@i+3
+   930     0775  0822               	movf	_voltage+2,w
+   931     0776  00CD               	movwf	lcdoutput2@i+2
+   932     0777  0821               	movf	_voltage+1,w
+   933     0778  00CC               	movwf	lcdoutput2@i+1
+   934     0779  0820               	movf	_voltage,w
+   935     077A  00CB               	movwf	lcdoutput2@i
+   936     077B  120A  118A  2554  120A  118A  	fcall	_lcdoutput2
+   937     0780                     l1099:
+   938                           
+   939                           ;taskadcpwm.c: 72:         CCPR1L=(voltage)>>2;
+   940     0780  1283               	bcf	3,5	;RP0=0, select bank0
+   941     0781  1303               	bcf	3,6	;RP1=0, select bank0
+   942     0782  0820               	movf	_voltage,w
+   943     0783  00CF               	movwf	??_main
+   944     0784  0821               	movf	_voltage+1,w
+   945     0785  00D0               	movwf	??_main+1
+   946     0786  0822               	movf	_voltage+2,w
+   947     0787  00D1               	movwf	??_main+2
+   948     0788  0823               	movf	_voltage+3,w
+   949     0789  00D2               	movwf	??_main+3
+   950     078A  3002               	movlw	2
+   951     078B                     u755:
+   952     078B  1003               	clrc
+   953     078C  0CD2               	rrf	??_main+3,f
+   954     078D  0CD1               	rrf	??_main+2,f
+   955     078E  0CD0               	rrf	??_main+1,f
+   956     078F  0CCF               	rrf	??_main,f
+   957     0790                     u750:
+   958     0790  3EFF               	addlw	-1
+   959     0791  1D03               	skipz
+   960     0792  2F8B               	goto	u755
+   961     0793  084F               	movf	??_main,w
+   962     0794  0095               	movwf	21	;volatile
+   963     0795                     l1101:
+   964                           
+   965                           ;taskadcpwm.c: 73:         CCP1CON=(CCP1CON&0x0C)+((voltage&0x30)<<4);
+   966     0795  0820               	movf	_voltage,w
+   967     0796  3930               	andlw	48
+   968     0797  00CF               	movwf	??_main
+   969     0798  3004               	movlw	4
+   970     0799                     u765:
+   971     0799  1003               	clrc
+   972     079A  0DCF               	rlf	??_main,f
+   973     079B  3EFF               	addlw	-1
+   974     079C  1D03               	skipz
+   975     079D  2F99               	goto	u765
+   976     079E  0817               	movf	23,w	;volatile
+   977     079F  390C               	andlw	12
+   978     07A0  074F               	addwf	??_main,w
+   979     07A1  0097               	movwf	23	;volatile
+   980     07A2                     l1103:
+   981                           
+   982                           ;taskadcpwm.c: 74:         for(fr=0;fr!=4;fr++)
+   983     07A2  01B2               	clrf	_fr
+   984     07A3  01B3               	clrf	_fr+1
+   985     07A4                     l1109:
+   986                           
+   987                           ;taskadcpwm.c: 75:             if(o[fr]==' ')
+   988     07A4  0832               	movf	_fr,w
+   989     07A5  3E28               	addlw	(low (_o| 0))& (0+255)
+   990     07A6  0084               	movwf	4
+   991     07A7  3020               	movlw	32
+   992     07A8  1383               	bcf	3,7	;select IRP bank0
+   993     07A9  0600               	xorwf	0,w
+   994     07AA  1D03               	btfss	3,2
+   995     07AB  2FAD               	goto	u771
+   996     07AC  2FAE               	goto	u770
+   997     07AD                     u771:
+   998     07AD  2FB8               	goto	l1113
+   999     07AE                     u770:
+  1000     07AE                     l1111:
+  1001                           
+  1002                           ;taskadcpwm.c: 76:                 lcddata(o[fr]);
+  1003     07AE  0832               	movf	_fr,w
+  1004     07AF  3E28               	addlw	(low (_o| 0))& (0+255)
+  1005     07B0  0084               	movwf	4
+  1006     07B1  0800               	movf	0,w
+  1007     07B2  120A  118A  2318  120A  118A  	fcall	_lcddata
+  1008     07B7  2FC2               	goto	l1115
+  1009     07B8                     l1113:
+  1010                           
+  1011                           ;taskadcpwm.c: 78:             lcddata((0x30)+o[fr]);
+  1012     07B8  0832               	movf	_fr,w
+  1013     07B9  3E28               	addlw	(low (_o| 0))& (0+255)
+  1014     07BA  0084               	movwf	4
+  1015     07BB  0800               	movf	0,w
+  1016     07BC  3E30               	addlw	48
+  1017     07BD  120A  118A  2318  120A  118A  	fcall	_lcddata
+  1018     07C2                     l1115:
+  1019     07C2  3001               	movlw	1
+  1020     07C3  1283               	bcf	3,5	;RP0=0, select bank0
+  1021     07C4  1303               	bcf	3,6	;RP1=0, select bank0
+  1022     07C5  07B2               	addwf	_fr,f
+  1023     07C6  1803               	skipnc
+  1024     07C7  0AB3               	incf	_fr+1,f
+  1025     07C8  3000               	movlw	0
+  1026     07C9  07B3               	addwf	_fr+1,f
+  1027     07CA                     l1117:
+  1028     07CA  3004               	movlw	4
+  1029     07CB  0632               	xorwf	_fr,w
+  1030     07CC  0433               	iorwf	_fr+1,w
+  1031     07CD  1D03               	btfss	3,2
+  1032     07CE  2FD0               	goto	u781
+  1033     07CF  2FD1               	goto	u780
+  1034     07D0                     u781:
+  1035     07D0  2FA4               	goto	l1109
+  1036     07D1                     u780:
+  1037     07D1                     l1119:
+  1038                           
+  1039                           ;taskadcpwm.c: 79:         delay(1000);
+  1040     07D1  30E8               	movlw	232
+  1041     07D2  00F0               	movwf	delay@delaycount
+  1042     07D3  3003               	movlw	3
+  1043     07D4  00F1               	movwf	delay@delaycount+1
+  1044     07D5  120A  118A  22E4  120A  118A  	fcall	_delay
+  1045     07DA  2E1B               	goto	l1033
+  1046     07DB  120A  118A  2800   	ljmp	start
+  1047     07DE                     __end_of_main:
+  1048                           
+  1049                           	psect	text1
+  1050     0554                     __ptext1:	
+  1051 ;; *************** function _lcdoutput2 *****************
+  1052 ;; Defined at:
+  1053 ;;		line 127 in file "taskadcpwm.c"
+  1054 ;; Parameters:    Size  Location     Type
+  1055 ;;  i               4   13[BANK0 ] unsigned long 
+  1056 ;; Auto vars:     Size  Location     Type
+  1057 ;;		None
+  1058 ;; Return value:  Size  Location     Type
+  1059 ;;                  1    wreg      void 
+  1060 ;; Registers used:
+  1061 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+  1062 ;; Tracked objects:
+  1063 ;;		On entry : 0/0
+  1064 ;;		On exit  : 0/0
+  1065 ;;		Unchanged: 0/0
+  1066 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1067 ;;      Params:         0       4       0       0       0
+  1068 ;;      Locals:         0       0       0       0       0
+  1069 ;;      Temps:          0       0       0       0       0
+  1070 ;;      Totals:         0       4       0       0       0
+  1071 ;;Total ram usage:        4 bytes
+  1072 ;; Hardware stack levels used: 1
+  1073 ;; Hardware stack levels required when called: 1
+  1074 ;; This function calls:
+  1075 ;;		___lldiv
+  1076 ;;		___llmod
+  1077 ;; This function is called by:
+  1078 ;;		_main
+  1079 ;; This function uses a non-reentrant model
+  1080 ;;
+  1081                           
+  1082     0554                     _lcdoutput2:	
+  1083                           ;psect for function _lcdoutput2
+  1084                           
+  1085     0554                     l1001:	
+  1086                           ;incstack = 0
+  1087                           ; Regs used in _lcdoutput2: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+  1088                           
+  1089                           
+  1090                           ;taskadcpwm.c: 127: void lcdoutput2(unsigned long i);taskadcpwm.c: 128: {;taskadcpwm.c: 
+      +                          129: o[3]=i%10;
+  1091     0554  3000               	movlw	0
+  1092     0555  00F3               	movwf	___llmod@divisor+3
+  1093     0556  3000               	movlw	0
+  1094     0557  00F2               	movwf	___llmod@divisor+2
+  1095     0558  3000               	movlw	0
+  1096     0559  00F1               	movwf	___llmod@divisor+1
+  1097     055A  300A               	movlw	10
+  1098     055B  00F0               	movwf	___llmod@divisor
+  1099     055C  1283               	bcf	3,5	;RP0=0, select bank0
+  1100     055D  1303               	bcf	3,6	;RP1=0, select bank0
+  1101     055E  084E               	movf	lcdoutput2@i+3,w
+  1102     055F  00F7               	movwf	___llmod@dividend+3
+  1103     0560  084D               	movf	lcdoutput2@i+2,w
+  1104     0561  00F6               	movwf	___llmod@dividend+2
+  1105     0562  084C               	movf	lcdoutput2@i+1,w
+  1106     0563  00F5               	movwf	___llmod@dividend+1
+  1107     0564  084B               	movf	lcdoutput2@i,w
+  1108     0565  00F4               	movwf	___llmod@dividend
+  1109     0566  120A  118A  23D6  120A  118A  	fcall	___llmod
+  1110     056B  0870               	movf	?___llmod,w
+  1111     056C  1283               	bcf	3,5	;RP0=0, select bank0
+  1112     056D  1303               	bcf	3,6	;RP1=0, select bank0
+  1113     056E  00AB               	movwf	_o+3
+  1114                           
+  1115                           ;taskadcpwm.c: 130: i/=10;
+  1116     056F  3000               	movlw	0
+  1117     0570  00C1               	movwf	___lldiv@divisor+3
+  1118     0571  3000               	movlw	0
+  1119     0572  00C0               	movwf	___lldiv@divisor+2
+  1120     0573  3000               	movlw	0
+  1121     0574  00BF               	movwf	___lldiv@divisor+1
+  1122     0575  300A               	movlw	10
+  1123     0576  00BE               	movwf	___lldiv@divisor
+  1124     0577  084E               	movf	lcdoutput2@i+3,w
+  1125     0578  00C5               	movwf	___lldiv@dividend+3
+  1126     0579  084D               	movf	lcdoutput2@i+2,w
+  1127     057A  00C4               	movwf	___lldiv@dividend+2
+  1128     057B  084C               	movf	lcdoutput2@i+1,w
+  1129     057C  00C3               	movwf	___lldiv@dividend+1
+  1130     057D  084B               	movf	lcdoutput2@i,w
+  1131     057E  00C2               	movwf	___lldiv@dividend
+  1132     057F  120A  118A  242A  120A  118A  	fcall	___lldiv
+  1133     0584  1283               	bcf	3,5	;RP0=0, select bank0
+  1134     0585  1303               	bcf	3,6	;RP1=0, select bank0
+  1135     0586  0841               	movf	?___lldiv+3,w
+  1136     0587  00CE               	movwf	lcdoutput2@i+3
+  1137     0588  0840               	movf	?___lldiv+2,w
+  1138     0589  00CD               	movwf	lcdoutput2@i+2
+  1139     058A  083F               	movf	?___lldiv+1,w
+  1140     058B  00CC               	movwf	lcdoutput2@i+1
+  1141     058C  083E               	movf	?___lldiv,w
+  1142     058D  00CB               	movwf	lcdoutput2@i
+  1143                           
+  1144                           ;taskadcpwm.c: 131: o[2]=i%10;
+  1145     058E  3000               	movlw	0
+  1146     058F  00F3               	movwf	___llmod@divisor+3
+  1147     0590  3000               	movlw	0
+  1148     0591  00F2               	movwf	___llmod@divisor+2
+  1149     0592  3000               	movlw	0
+  1150     0593  00F1               	movwf	___llmod@divisor+1
+  1151     0594  300A               	movlw	10
+  1152     0595  00F0               	movwf	___llmod@divisor
+  1153     0596  084E               	movf	lcdoutput2@i+3,w
+  1154     0597  00F7               	movwf	___llmod@dividend+3
+  1155     0598  084D               	movf	lcdoutput2@i+2,w
+  1156     0599  00F6               	movwf	___llmod@dividend+2
+  1157     059A  084C               	movf	lcdoutput2@i+1,w
+  1158     059B  00F5               	movwf	___llmod@dividend+1
+  1159     059C  084B               	movf	lcdoutput2@i,w
+  1160     059D  00F4               	movwf	___llmod@dividend
+  1161     059E  120A  118A  23D6  120A  118A  	fcall	___llmod
+  1162     05A3  0870               	movf	?___llmod,w
+  1163     05A4  1283               	bcf	3,5	;RP0=0, select bank0
+  1164     05A5  1303               	bcf	3,6	;RP1=0, select bank0
+  1165     05A6  00AA               	movwf	_o+2
+  1166                           
+  1167                           ;taskadcpwm.c: 132: i/=10;
+  1168     05A7  3000               	movlw	0
+  1169     05A8  00C1               	movwf	___lldiv@divisor+3
+  1170     05A9  3000               	movlw	0
+  1171     05AA  00C0               	movwf	___lldiv@divisor+2
+  1172     05AB  3000               	movlw	0
+  1173     05AC  00BF               	movwf	___lldiv@divisor+1
+  1174     05AD  300A               	movlw	10
+  1175     05AE  00BE               	movwf	___lldiv@divisor
+  1176     05AF  084E               	movf	lcdoutput2@i+3,w
+  1177     05B0  00C5               	movwf	___lldiv@dividend+3
+  1178     05B1  084D               	movf	lcdoutput2@i+2,w
+  1179     05B2  00C4               	movwf	___lldiv@dividend+2
+  1180     05B3  084C               	movf	lcdoutput2@i+1,w
+  1181     05B4  00C3               	movwf	___lldiv@dividend+1
+  1182     05B5  084B               	movf	lcdoutput2@i,w
+  1183     05B6  00C2               	movwf	___lldiv@dividend
+  1184     05B7  120A  118A  242A  120A  118A  	fcall	___lldiv
+  1185     05BC  1283               	bcf	3,5	;RP0=0, select bank0
+  1186     05BD  1303               	bcf	3,6	;RP1=0, select bank0
+  1187     05BE  0841               	movf	?___lldiv+3,w
+  1188     05BF  00CE               	movwf	lcdoutput2@i+3
+  1189     05C0  0840               	movf	?___lldiv+2,w
+  1190     05C1  00CD               	movwf	lcdoutput2@i+2
+  1191     05C2  083F               	movf	?___lldiv+1,w
+  1192     05C3  00CC               	movwf	lcdoutput2@i+1
+  1193     05C4  083E               	movf	?___lldiv,w
+  1194     05C5  00CB               	movwf	lcdoutput2@i
+  1195                           
+  1196                           ;taskadcpwm.c: 133: o[1]=i%10;
+  1197     05C6  3000               	movlw	0
+  1198     05C7  00F3               	movwf	___llmod@divisor+3
+  1199     05C8  3000               	movlw	0
+  1200     05C9  00F2               	movwf	___llmod@divisor+2
+  1201     05CA  3000               	movlw	0
+  1202     05CB  00F1               	movwf	___llmod@divisor+1
+  1203     05CC  300A               	movlw	10
+  1204     05CD  00F0               	movwf	___llmod@divisor
+  1205     05CE  084E               	movf	lcdoutput2@i+3,w
+  1206     05CF  00F7               	movwf	___llmod@dividend+3
+  1207     05D0  084D               	movf	lcdoutput2@i+2,w
+  1208     05D1  00F6               	movwf	___llmod@dividend+2
+  1209     05D2  084C               	movf	lcdoutput2@i+1,w
+  1210     05D3  00F5               	movwf	___llmod@dividend+1
+  1211     05D4  084B               	movf	lcdoutput2@i,w
+  1212     05D5  00F4               	movwf	___llmod@dividend
+  1213     05D6  120A  118A  23D6  120A  118A  	fcall	___llmod
+  1214     05DB  0870               	movf	?___llmod,w
+  1215     05DC  1283               	bcf	3,5	;RP0=0, select bank0
+  1216     05DD  1303               	bcf	3,6	;RP1=0, select bank0
+  1217     05DE  00A9               	movwf	_o+1
+  1218                           
+  1219                           ;taskadcpwm.c: 134: i/=10;
+  1220     05DF  3000               	movlw	0
+  1221     05E0  00C1               	movwf	___lldiv@divisor+3
+  1222     05E1  3000               	movlw	0
+  1223     05E2  00C0               	movwf	___lldiv@divisor+2
+  1224     05E3  3000               	movlw	0
+  1225     05E4  00BF               	movwf	___lldiv@divisor+1
+  1226     05E5  300A               	movlw	10
+  1227     05E6  00BE               	movwf	___lldiv@divisor
+  1228     05E7  084E               	movf	lcdoutput2@i+3,w
+  1229     05E8  00C5               	movwf	___lldiv@dividend+3
+  1230     05E9  084D               	movf	lcdoutput2@i+2,w
+  1231     05EA  00C4               	movwf	___lldiv@dividend+2
+  1232     05EB  084C               	movf	lcdoutput2@i+1,w
+  1233     05EC  00C3               	movwf	___lldiv@dividend+1
+  1234     05ED  084B               	movf	lcdoutput2@i,w
+  1235     05EE  00C2               	movwf	___lldiv@dividend
+  1236     05EF  120A  118A  242A  120A  118A  	fcall	___lldiv
+  1237     05F4  1283               	bcf	3,5	;RP0=0, select bank0
+  1238     05F5  1303               	bcf	3,6	;RP1=0, select bank0
+  1239     05F6  0841               	movf	?___lldiv+3,w
+  1240     05F7  00CE               	movwf	lcdoutput2@i+3
+  1241     05F8  0840               	movf	?___lldiv+2,w
+  1242     05F9  00CD               	movwf	lcdoutput2@i+2
+  1243     05FA  083F               	movf	?___lldiv+1,w
+  1244     05FB  00CC               	movwf	lcdoutput2@i+1
+  1245     05FC  083E               	movf	?___lldiv,w
+  1246     05FD  00CB               	movwf	lcdoutput2@i
+  1247     05FE                     l1003:
+  1248                           
+  1249                           ;taskadcpwm.c: 135: o[0]=i;
+  1250     05FE  084B               	movf	lcdoutput2@i,w
+  1251     05FF  00A8               	movwf	_o
+  1252     0600                     l1005:
+  1253                           
+  1254                           ;taskadcpwm.c: 136: if(o[0]==0)
+  1255     0600  0828               	movf	_o,w
+  1256     0601  1D03               	btfss	3,2
+  1257     0602  2E04               	goto	u571
+  1258     0603  2E05               	goto	u570
+  1259     0604                     u571:
+  1260     0604  2E15               	goto	l109
+  1261     0605                     u570:
+  1262     0605                     l1007:
+  1263                           
+  1264                           ;taskadcpwm.c: 137: {;taskadcpwm.c: 138:     o[0]=' ';
+  1265     0605  3020               	movlw	32
+  1266     0606  00A8               	movwf	_o
+  1267     0607                     l1009:
+  1268                           
+  1269                           ;taskadcpwm.c: 139:     if(o[1]==0)
+  1270     0607  0829               	movf	_o+1,w
+  1271     0608  1D03               	btfss	3,2
+  1272     0609  2E0B               	goto	u581
+  1273     060A  2E0C               	goto	u580
+  1274     060B                     u581:
+  1275     060B  2E15               	goto	l109
+  1276     060C                     u580:
+  1277     060C                     l1011:
+  1278                           
+  1279                           ;taskadcpwm.c: 140:     {;taskadcpwm.c: 141:         o[1]=' ';
+  1280     060C  3020               	movlw	32
+  1281     060D  00A9               	movwf	_o+1
+  1282     060E                     l1013:
+  1283                           
+  1284                           ;taskadcpwm.c: 142:         if(o[2]==0)
+  1285     060E  082A               	movf	_o+2,w
+  1286     060F  1D03               	btfss	3,2
+  1287     0610  2E12               	goto	u591
+  1288     0611  2E13               	goto	u590
+  1289     0612                     u591:
+  1290     0612  2E15               	goto	l109
+  1291     0613                     u590:
+  1292     0613                     l1015:
+  1293                           
+  1294                           ;taskadcpwm.c: 143:         {;taskadcpwm.c: 144:             o[2]=' ';
+  1295     0613  3020               	movlw	32
+  1296     0614  00AA               	movwf	_o+2
+  1297     0615                     l109:
+  1298     0615  0008               	return
+  1299     0616                     __end_of_lcdoutput2:
+  1300                           
+  1301                           	psect	text2
+  1302     0492                     __ptext2:	
+  1303 ;; *************** function _lcdoutput1 *****************
+  1304 ;; Defined at:
+  1305 ;;		line 104 in file "taskadcpwm.c"
+  1306 ;; Parameters:    Size  Location     Type
+  1307 ;;  i               4   13[BANK0 ] unsigned long 
+  1308 ;; Auto vars:     Size  Location     Type
+  1309 ;;		None
+  1310 ;; Return value:  Size  Location     Type
+  1311 ;;                  1    wreg      void 
+  1312 ;; Registers used:
+  1313 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+  1314 ;; Tracked objects:
+  1315 ;;		On entry : 0/0
+  1316 ;;		On exit  : 0/0
+  1317 ;;		Unchanged: 0/0
+  1318 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1319 ;;      Params:         0       4       0       0       0
+  1320 ;;      Locals:         0       0       0       0       0
+  1321 ;;      Temps:          0       0       0       0       0
+  1322 ;;      Totals:         0       4       0       0       0
+  1323 ;;Total ram usage:        4 bytes
+  1324 ;; Hardware stack levels used: 1
+  1325 ;; Hardware stack levels required when called: 1
+  1326 ;; This function calls:
+  1327 ;;		___lldiv
+  1328 ;;		___llmod
+  1329 ;; This function is called by:
+  1330 ;;		_main
+  1331 ;; This function uses a non-reentrant model
+  1332 ;;
+  1333                           
+  1334     0492                     _lcdoutput1:	
+  1335                           ;psect for function _lcdoutput1
+  1336                           
+  1337     0492                     l985:	
+  1338                           ;incstack = 0
+  1339                           ; Regs used in _lcdoutput1: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+  1340                           
+  1341                           
+  1342                           ;taskadcpwm.c: 104: void lcdoutput1(unsigned long i);taskadcpwm.c: 105: {;taskadcpwm.c: 
+      +                          106: l[3]=i%10;
+  1343     0492  3000               	movlw	0
+  1344     0493  00F3               	movwf	___llmod@divisor+3
+  1345     0494  3000               	movlw	0
+  1346     0495  00F2               	movwf	___llmod@divisor+2
+  1347     0496  3000               	movlw	0
+  1348     0497  00F1               	movwf	___llmod@divisor+1
+  1349     0498  300A               	movlw	10
+  1350     0499  00F0               	movwf	___llmod@divisor
+  1351     049A  1283               	bcf	3,5	;RP0=0, select bank0
+  1352     049B  1303               	bcf	3,6	;RP1=0, select bank0
+  1353     049C  084E               	movf	lcdoutput1@i+3,w
+  1354     049D  00F7               	movwf	___llmod@dividend+3
+  1355     049E  084D               	movf	lcdoutput1@i+2,w
+  1356     049F  00F6               	movwf	___llmod@dividend+2
+  1357     04A0  084C               	movf	lcdoutput1@i+1,w
+  1358     04A1  00F5               	movwf	___llmod@dividend+1
+  1359     04A2  084B               	movf	lcdoutput1@i,w
+  1360     04A3  00F4               	movwf	___llmod@dividend
+  1361     04A4  120A  118A  23D6  120A  118A  	fcall	___llmod
+  1362     04A9  0870               	movf	?___llmod,w
+  1363     04AA  1283               	bcf	3,5	;RP0=0, select bank0
+  1364     04AB  1303               	bcf	3,6	;RP1=0, select bank0
+  1365     04AC  00AF               	movwf	_l+3
+  1366                           
+  1367                           ;taskadcpwm.c: 107: i/=10;
+  1368     04AD  3000               	movlw	0
+  1369     04AE  00C1               	movwf	___lldiv@divisor+3
+  1370     04AF  3000               	movlw	0
+  1371     04B0  00C0               	movwf	___lldiv@divisor+2
+  1372     04B1  3000               	movlw	0
+  1373     04B2  00BF               	movwf	___lldiv@divisor+1
+  1374     04B3  300A               	movlw	10
+  1375     04B4  00BE               	movwf	___lldiv@divisor
+  1376     04B5  084E               	movf	lcdoutput1@i+3,w
+  1377     04B6  00C5               	movwf	___lldiv@dividend+3
+  1378     04B7  084D               	movf	lcdoutput1@i+2,w
+  1379     04B8  00C4               	movwf	___lldiv@dividend+2
+  1380     04B9  084C               	movf	lcdoutput1@i+1,w
+  1381     04BA  00C3               	movwf	___lldiv@dividend+1
+  1382     04BB  084B               	movf	lcdoutput1@i,w
+  1383     04BC  00C2               	movwf	___lldiv@dividend
+  1384     04BD  120A  118A  242A  120A  118A  	fcall	___lldiv
+  1385     04C2  1283               	bcf	3,5	;RP0=0, select bank0
+  1386     04C3  1303               	bcf	3,6	;RP1=0, select bank0
+  1387     04C4  0841               	movf	?___lldiv+3,w
+  1388     04C5  00CE               	movwf	lcdoutput1@i+3
+  1389     04C6  0840               	movf	?___lldiv+2,w
+  1390     04C7  00CD               	movwf	lcdoutput1@i+2
+  1391     04C8  083F               	movf	?___lldiv+1,w
+  1392     04C9  00CC               	movwf	lcdoutput1@i+1
+  1393     04CA  083E               	movf	?___lldiv,w
+  1394     04CB  00CB               	movwf	lcdoutput1@i
+  1395                           
+  1396                           ;taskadcpwm.c: 108: l[2]=i%10;
+  1397     04CC  3000               	movlw	0
+  1398     04CD  00F3               	movwf	___llmod@divisor+3
+  1399     04CE  3000               	movlw	0
+  1400     04CF  00F2               	movwf	___llmod@divisor+2
+  1401     04D0  3000               	movlw	0
+  1402     04D1  00F1               	movwf	___llmod@divisor+1
+  1403     04D2  300A               	movlw	10
+  1404     04D3  00F0               	movwf	___llmod@divisor
+  1405     04D4  084E               	movf	lcdoutput1@i+3,w
+  1406     04D5  00F7               	movwf	___llmod@dividend+3
+  1407     04D6  084D               	movf	lcdoutput1@i+2,w
+  1408     04D7  00F6               	movwf	___llmod@dividend+2
+  1409     04D8  084C               	movf	lcdoutput1@i+1,w
+  1410     04D9  00F5               	movwf	___llmod@dividend+1
+  1411     04DA  084B               	movf	lcdoutput1@i,w
+  1412     04DB  00F4               	movwf	___llmod@dividend
+  1413     04DC  120A  118A  23D6  120A  118A  	fcall	___llmod
+  1414     04E1  0870               	movf	?___llmod,w
+  1415     04E2  1283               	bcf	3,5	;RP0=0, select bank0
+  1416     04E3  1303               	bcf	3,6	;RP1=0, select bank0
+  1417     04E4  00AE               	movwf	_l+2
+  1418                           
+  1419                           ;taskadcpwm.c: 109: i/=10;
+  1420     04E5  3000               	movlw	0
+  1421     04E6  00C1               	movwf	___lldiv@divisor+3
+  1422     04E7  3000               	movlw	0
+  1423     04E8  00C0               	movwf	___lldiv@divisor+2
+  1424     04E9  3000               	movlw	0
+  1425     04EA  00BF               	movwf	___lldiv@divisor+1
+  1426     04EB  300A               	movlw	10
+  1427     04EC  00BE               	movwf	___lldiv@divisor
+  1428     04ED  084E               	movf	lcdoutput1@i+3,w
+  1429     04EE  00C5               	movwf	___lldiv@dividend+3
+  1430     04EF  084D               	movf	lcdoutput1@i+2,w
+  1431     04F0  00C4               	movwf	___lldiv@dividend+2
+  1432     04F1  084C               	movf	lcdoutput1@i+1,w
+  1433     04F2  00C3               	movwf	___lldiv@dividend+1
+  1434     04F3  084B               	movf	lcdoutput1@i,w
+  1435     04F4  00C2               	movwf	___lldiv@dividend
+  1436     04F5  120A  118A  242A  120A  118A  	fcall	___lldiv
+  1437     04FA  1283               	bcf	3,5	;RP0=0, select bank0
+  1438     04FB  1303               	bcf	3,6	;RP1=0, select bank0
+  1439     04FC  0841               	movf	?___lldiv+3,w
+  1440     04FD  00CE               	movwf	lcdoutput1@i+3
+  1441     04FE  0840               	movf	?___lldiv+2,w
+  1442     04FF  00CD               	movwf	lcdoutput1@i+2
+  1443     0500  083F               	movf	?___lldiv+1,w
+  1444     0501  00CC               	movwf	lcdoutput1@i+1
+  1445     0502  083E               	movf	?___lldiv,w
+  1446     0503  00CB               	movwf	lcdoutput1@i
+  1447                           
+  1448                           ;taskadcpwm.c: 110: l[1]=i%10;
+  1449     0504  3000               	movlw	0
+  1450     0505  00F3               	movwf	___llmod@divisor+3
+  1451     0506  3000               	movlw	0
+  1452     0507  00F2               	movwf	___llmod@divisor+2
+  1453     0508  3000               	movlw	0
+  1454     0509  00F1               	movwf	___llmod@divisor+1
+  1455     050A  300A               	movlw	10
+  1456     050B  00F0               	movwf	___llmod@divisor
+  1457     050C  084E               	movf	lcdoutput1@i+3,w
+  1458     050D  00F7               	movwf	___llmod@dividend+3
+  1459     050E  084D               	movf	lcdoutput1@i+2,w
+  1460     050F  00F6               	movwf	___llmod@dividend+2
+  1461     0510  084C               	movf	lcdoutput1@i+1,w
+  1462     0511  00F5               	movwf	___llmod@dividend+1
+  1463     0512  084B               	movf	lcdoutput1@i,w
+  1464     0513  00F4               	movwf	___llmod@dividend
+  1465     0514  120A  118A  23D6  120A  118A  	fcall	___llmod
+  1466     0519  0870               	movf	?___llmod,w
+  1467     051A  1283               	bcf	3,5	;RP0=0, select bank0
+  1468     051B  1303               	bcf	3,6	;RP1=0, select bank0
+  1469     051C  00AD               	movwf	_l+1
+  1470                           
+  1471                           ;taskadcpwm.c: 111: i/=10;
+  1472     051D  3000               	movlw	0
+  1473     051E  00C1               	movwf	___lldiv@divisor+3
+  1474     051F  3000               	movlw	0
+  1475     0520  00C0               	movwf	___lldiv@divisor+2
+  1476     0521  3000               	movlw	0
+  1477     0522  00BF               	movwf	___lldiv@divisor+1
+  1478     0523  300A               	movlw	10
+  1479     0524  00BE               	movwf	___lldiv@divisor
+  1480     0525  084E               	movf	lcdoutput1@i+3,w
+  1481     0526  00C5               	movwf	___lldiv@dividend+3
+  1482     0527  084D               	movf	lcdoutput1@i+2,w
+  1483     0528  00C4               	movwf	___lldiv@dividend+2
+  1484     0529  084C               	movf	lcdoutput1@i+1,w
+  1485     052A  00C3               	movwf	___lldiv@dividend+1
+  1486     052B  084B               	movf	lcdoutput1@i,w
+  1487     052C  00C2               	movwf	___lldiv@dividend
+  1488     052D  120A  118A  242A  120A  118A  	fcall	___lldiv
+  1489     0532  1283               	bcf	3,5	;RP0=0, select bank0
+  1490     0533  1303               	bcf	3,6	;RP1=0, select bank0
+  1491     0534  0841               	movf	?___lldiv+3,w
+  1492     0535  00CE               	movwf	lcdoutput1@i+3
+  1493     0536  0840               	movf	?___lldiv+2,w
+  1494     0537  00CD               	movwf	lcdoutput1@i+2
+  1495     0538  083F               	movf	?___lldiv+1,w
+  1496     0539  00CC               	movwf	lcdoutput1@i+1
+  1497     053A  083E               	movf	?___lldiv,w
+  1498     053B  00CB               	movwf	lcdoutput1@i
+  1499     053C                     l987:
+  1500                           
+  1501                           ;taskadcpwm.c: 112: l[0]=i;
+  1502     053C  084B               	movf	lcdoutput1@i,w
+  1503     053D  00AC               	movwf	_l
+  1504     053E                     l989:
+  1505                           
+  1506                           ;taskadcpwm.c: 113: if(l[0]==0)
+  1507     053E  082C               	movf	_l,w
+  1508     053F  1D03               	btfss	3,2
+  1509     0540  2D42               	goto	u541
+  1510     0541  2D43               	goto	u540
+  1511     0542                     u541:
+  1512     0542  2D53               	goto	l103
+  1513     0543                     u540:
+  1514     0543                     l991:
+  1515                           
+  1516                           ;taskadcpwm.c: 114: {;taskadcpwm.c: 115:     l[0]=' ';
+  1517     0543  3020               	movlw	32
+  1518     0544  00AC               	movwf	_l
+  1519     0545                     l993:
+  1520                           
+  1521                           ;taskadcpwm.c: 116:     if(l[1]==0)
+  1522     0545  082D               	movf	_l+1,w
+  1523     0546  1D03               	btfss	3,2
+  1524     0547  2D49               	goto	u551
+  1525     0548  2D4A               	goto	u550
+  1526     0549                     u551:
+  1527     0549  2D53               	goto	l103
+  1528     054A                     u550:
+  1529     054A                     l995:
+  1530                           
+  1531                           ;taskadcpwm.c: 117:     {;taskadcpwm.c: 118:         l[1]=' ';
+  1532     054A  3020               	movlw	32
+  1533     054B  00AD               	movwf	_l+1
+  1534     054C                     l997:
+  1535                           
+  1536                           ;taskadcpwm.c: 119:         if(l[2]==0)
+  1537     054C  082E               	movf	_l+2,w
+  1538     054D  1D03               	btfss	3,2
+  1539     054E  2D50               	goto	u561
+  1540     054F  2D51               	goto	u560
+  1541     0550                     u561:
+  1542     0550  2D53               	goto	l103
+  1543     0551                     u560:
+  1544     0551                     l999:
+  1545                           
+  1546                           ;taskadcpwm.c: 120:         {;taskadcpwm.c: 121:             l[2]=' ';
+  1547     0551  3020               	movlw	32
+  1548     0552  00AE               	movwf	_l+2
+  1549     0553                     l103:
+  1550     0553  0008               	return
+  1551     0554                     __end_of_lcdoutput1:
+  1552                           
+  1553                           	psect	text3
+  1554     03D6                     __ptext3:	
+  1555 ;; *************** function ___llmod *****************
+  1556 ;; Defined at:
+  1557 ;;		line 5 in file "C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\llmod.c"
+  1558 ;; Parameters:    Size  Location     Type
+  1559 ;;  divisor         4    0[COMMON] unsigned long 
+  1560 ;;  dividend        4    4[COMMON] unsigned long 
+  1561 ;; Auto vars:     Size  Location     Type
+  1562 ;;  counter         1    9[COMMON] unsigned char 
+  1563 ;; Return value:  Size  Location     Type
+  1564 ;;                  4    0[COMMON] unsigned long 
+  1565 ;; Registers used:
+  1566 ;;		wreg, status,2, status,0, btemp+1
+  1567 ;; Tracked objects:
+  1568 ;;		On entry : 0/0
+  1569 ;;		On exit  : 0/0
+  1570 ;;		Unchanged: 0/0
+  1571 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1572 ;;      Params:         8       0       0       0       0
+  1573 ;;      Locals:         1       0       0       0       0
+  1574 ;;      Temps:          1       0       0       0       0
+  1575 ;;      Totals:        10       0       0       0       0
+  1576 ;;Total ram usage:       10 bytes
+  1577 ;; Hardware stack levels used: 1
+  1578 ;; This function calls:
+  1579 ;;		Nothing
+  1580 ;; This function is called by:
+  1581 ;;		_lcdoutput1
+  1582 ;;		_lcdoutput2
+  1583 ;; This function uses a non-reentrant model
+  1584 ;;
+  1585                           
+  1586     03D6                     ___llmod:	
+  1587                           ;psect for function ___llmod
+  1588                           
+  1589     03D6                     l933:	
+  1590                           ;incstack = 0
+  1591                           ; Regs used in ___llmod: [wreg+status,2+status,0+btemp+1]
+  1592                           
+  1593     03D6  0873               	movf	___llmod@divisor+3,w
+  1594     03D7  0472               	iorwf	___llmod@divisor+2,w
+  1595     03D8  0471               	iorwf	___llmod@divisor+1,w
+  1596     03D9  0470               	iorwf	___llmod@divisor,w
+  1597     03DA  1903               	skipnz
+  1598     03DB  2BDD               	goto	u481
+  1599     03DC  2BDE               	goto	u480
+  1600     03DD                     u481:
+  1601     03DD  2C21               	goto	l951
+  1602     03DE                     u480:
+  1603     03DE                     l935:
+  1604     03DE  01F9               	clrf	___llmod@counter
+  1605     03DF  0AF9               	incf	___llmod@counter,f
+  1606     03E0  2BEE               	goto	l941
+  1607     03E1                     l937:
+  1608     03E1  3001               	movlw	1
+  1609     03E2  00F8               	movwf	??___llmod
+  1610     03E3                     u495:
+  1611     03E3  1003               	clrc
+  1612     03E4  0DF0               	rlf	___llmod@divisor,f
+  1613     03E5  0DF1               	rlf	___llmod@divisor+1,f
+  1614     03E6  0DF2               	rlf	___llmod@divisor+2,f
+  1615     03E7  0DF3               	rlf	___llmod@divisor+3,f
+  1616     03E8  0BF8               	decfsz	??___llmod,f
+  1617     03E9  2BE3               	goto	u495
+  1618     03EA                     l939:
+  1619     03EA  3001               	movlw	1
+  1620     03EB  00FF               	movwf	btemp+1
+  1621     03EC  087F               	movf	btemp+1,w
+  1622     03ED  07F9               	addwf	___llmod@counter,f
+  1623     03EE                     l941:
+  1624     03EE  1FF3               	btfss	___llmod@divisor+3,7
+  1625     03EF  2BF1               	goto	u501
+  1626     03F0  2BF2               	goto	u500
+  1627     03F1                     u501:
+  1628     03F1  2BE1               	goto	l937
+  1629     03F2                     u500:
+  1630     03F2                     l943:
+  1631     03F2  0873               	movf	___llmod@divisor+3,w
+  1632     03F3  0277               	subwf	___llmod@dividend+3,w
+  1633     03F4  1D03               	skipz
+  1634     03F5  2C00               	goto	u515
+  1635     03F6  0872               	movf	___llmod@divisor+2,w
+  1636     03F7  0276               	subwf	___llmod@dividend+2,w
+  1637     03F8  1D03               	skipz
+  1638     03F9  2C00               	goto	u515
+  1639     03FA  0871               	movf	___llmod@divisor+1,w
+  1640     03FB  0275               	subwf	___llmod@dividend+1,w
+  1641     03FC  1D03               	skipz
+  1642     03FD  2C00               	goto	u515
+  1643     03FE  0870               	movf	___llmod@divisor,w
+  1644     03FF  0274               	subwf	___llmod@dividend,w
+  1645     0400                     u515:
+  1646     0400  1C03               	skipc
+  1647     0401  2C03               	goto	u511
+  1648     0402  2C04               	goto	u510
+  1649     0403                     u511:
+  1650     0403  2C12               	goto	l947
+  1651     0404                     u510:
+  1652     0404                     l945:
+  1653     0404  0870               	movf	___llmod@divisor,w
+  1654     0405  02F4               	subwf	___llmod@dividend,f
+  1655     0406  0871               	movf	___llmod@divisor+1,w
+  1656     0407  1C03               	skipc
+  1657     0408  0F71               	incfsz	___llmod@divisor+1,w
+  1658     0409  02F5               	subwf	___llmod@dividend+1,f
+  1659     040A  0872               	movf	___llmod@divisor+2,w
+  1660     040B  1C03               	skipc
+  1661     040C  0F72               	incfsz	___llmod@divisor+2,w
+  1662     040D  02F6               	subwf	___llmod@dividend+2,f
+  1663     040E  0873               	movf	___llmod@divisor+3,w
+  1664     040F  1C03               	skipc
+  1665     0410  0F73               	incfsz	___llmod@divisor+3,w
+  1666     0411  02F7               	subwf	___llmod@dividend+3,f
+  1667     0412                     l947:
+  1668     0412  3001               	movlw	1
+  1669     0413                     u525:
+  1670     0413  1003               	clrc
+  1671     0414  0CF3               	rrf	___llmod@divisor+3,f
+  1672     0415  0CF2               	rrf	___llmod@divisor+2,f
+  1673     0416  0CF1               	rrf	___llmod@divisor+1,f
+  1674     0417  0CF0               	rrf	___llmod@divisor,f
+  1675     0418  3EFF               	addlw	-1
+  1676     0419  1D03               	skipz
+  1677     041A  2C13               	goto	u525
+  1678     041B                     l949:
+  1679     041B  3001               	movlw	1
+  1680     041C  02F9               	subwf	___llmod@counter,f
+  1681     041D  1D03               	btfss	3,2
+  1682     041E  2C20               	goto	u531
+  1683     041F  2C21               	goto	u530
+  1684     0420                     u531:
+  1685     0420  2BF2               	goto	l943
+  1686     0421                     u530:
+  1687     0421                     l951:
+  1688     0421  0877               	movf	___llmod@dividend+3,w
+  1689     0422  00F3               	movwf	?___llmod+3
+  1690     0423  0876               	movf	___llmod@dividend+2,w
+  1691     0424  00F2               	movwf	?___llmod+2
+  1692     0425  0875               	movf	___llmod@dividend+1,w
+  1693     0426  00F1               	movwf	?___llmod+1
+  1694     0427  0874               	movf	___llmod@dividend,w
+  1695     0428  00F0               	movwf	?___llmod
+  1696     0429                     l437:
+  1697     0429  0008               	return
+  1698     042A                     __end_of___llmod:
+  1699                           
+  1700                           	psect	text4
+  1701     042A                     __ptext4:	
+  1702 ;; *************** function ___lldiv *****************
+  1703 ;; Defined at:
+  1704 ;;		line 5 in file "C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\__lldiv.c"
+  1705 ;; Parameters:    Size  Location     Type
+  1706 ;;  divisor         4    0[BANK0 ] unsigned long 
+  1707 ;;  dividend        4    4[BANK0 ] unsigned long 
+  1708 ;; Auto vars:     Size  Location     Type
+  1709 ;;  quotient        4    8[BANK0 ] unsigned long 
+  1710 ;;  counter         1   12[BANK0 ] unsigned char 
+  1711 ;; Return value:  Size  Location     Type
+  1712 ;;                  4    0[BANK0 ] unsigned long 
+  1713 ;; Registers used:
+  1714 ;;		wreg, status,2, status,0, btemp+1
+  1715 ;; Tracked objects:
+  1716 ;;		On entry : 0/0
+  1717 ;;		On exit  : 0/0
+  1718 ;;		Unchanged: 0/0
+  1719 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1720 ;;      Params:         0       8       0       0       0
+  1721 ;;      Locals:         0       5       0       0       0
+  1722 ;;      Temps:          1       0       0       0       0
+  1723 ;;      Totals:         1      13       0       0       0
+  1724 ;;Total ram usage:       14 bytes
+  1725 ;; Hardware stack levels used: 1
+  1726 ;; This function calls:
+  1727 ;;		Nothing
+  1728 ;; This function is called by:
+  1729 ;;		_main
+  1730 ;;		_lcdoutput1
+  1731 ;;		_lcdoutput2
+  1732 ;; This function uses a non-reentrant model
+  1733 ;;
+  1734                           
+  1735     042A                     ___lldiv:	
+  1736                           ;psect for function ___lldiv
+  1737                           
+  1738     042A                     l907:	
+  1739                           ;incstack = 0
+  1740                           ; Regs used in ___lldiv: [wreg+status,2+status,0+btemp+1]
+  1741                           
+  1742     042A  3000               	movlw	0
+  1743     042B  1283               	bcf	3,5	;RP0=0, select bank0
+  1744     042C  1303               	bcf	3,6	;RP1=0, select bank0
+  1745     042D  00C9               	movwf	___lldiv@quotient+3
+  1746     042E  3000               	movlw	0
+  1747     042F  00C8               	movwf	___lldiv@quotient+2
+  1748     0430  3000               	movlw	0
+  1749     0431  00C7               	movwf	___lldiv@quotient+1
+  1750     0432  3000               	movlw	0
+  1751     0433  00C6               	movwf	___lldiv@quotient
+  1752     0434  0841               	movf	___lldiv@divisor+3,w
+  1753     0435  0440               	iorwf	___lldiv@divisor+2,w
+  1754     0436  043F               	iorwf	___lldiv@divisor+1,w
+  1755     0437  043E               	iorwf	___lldiv@divisor,w
+  1756     0438  1903               	skipnz
+  1757     0439  2C3B               	goto	u411
+  1758     043A  2C3C               	goto	u410
+  1759     043B                     u411:
+  1760     043B  2C89               	goto	l929
+  1761     043C                     u410:
+  1762     043C                     l909:
+  1763     043C  01CA               	clrf	___lldiv@counter
+  1764     043D  0ACA               	incf	___lldiv@counter,f
+  1765     043E  2C4C               	goto	l915
+  1766     043F                     l911:
+  1767     043F  3001               	movlw	1
+  1768     0440  00FD               	movwf	??___lldiv
+  1769     0441                     u425:
+  1770     0441  1003               	clrc
+  1771     0442  0DBE               	rlf	___lldiv@divisor,f
+  1772     0443  0DBF               	rlf	___lldiv@divisor+1,f
+  1773     0444  0DC0               	rlf	___lldiv@divisor+2,f
+  1774     0445  0DC1               	rlf	___lldiv@divisor+3,f
+  1775     0446  0BFD               	decfsz	??___lldiv,f
+  1776     0447  2C41               	goto	u425
+  1777     0448                     l913:
+  1778     0448  3001               	movlw	1
+  1779     0449  00FF               	movwf	btemp+1
+  1780     044A  087F               	movf	btemp+1,w
+  1781     044B  07CA               	addwf	___lldiv@counter,f
+  1782     044C                     l915:
+  1783     044C  1FC1               	btfss	___lldiv@divisor+3,7
+  1784     044D  2C4F               	goto	u431
+  1785     044E  2C50               	goto	u430
+  1786     044F                     u431:
+  1787     044F  2C3F               	goto	l911
+  1788     0450                     u430:
+  1789     0450                     l917:
+  1790     0450  3001               	movlw	1
+  1791     0451  00FD               	movwf	??___lldiv
+  1792     0452                     u445:
+  1793     0452  1003               	clrc
+  1794     0453  0DC6               	rlf	___lldiv@quotient,f
+  1795     0454  0DC7               	rlf	___lldiv@quotient+1,f
+  1796     0455  0DC8               	rlf	___lldiv@quotient+2,f
+  1797     0456  0DC9               	rlf	___lldiv@quotient+3,f
+  1798     0457  0BFD               	decfsz	??___lldiv,f
+  1799     0458  2C52               	goto	u445
+  1800     0459                     l919:
+  1801     0459  0841               	movf	___lldiv@divisor+3,w
+  1802     045A  0245               	subwf	___lldiv@dividend+3,w
+  1803     045B  1D03               	skipz
+  1804     045C  2C67               	goto	u455
+  1805     045D  0840               	movf	___lldiv@divisor+2,w
+  1806     045E  0244               	subwf	___lldiv@dividend+2,w
+  1807     045F  1D03               	skipz
+  1808     0460  2C67               	goto	u455
+  1809     0461  083F               	movf	___lldiv@divisor+1,w
+  1810     0462  0243               	subwf	___lldiv@dividend+1,w
+  1811     0463  1D03               	skipz
+  1812     0464  2C67               	goto	u455
+  1813     0465  083E               	movf	___lldiv@divisor,w
+  1814     0466  0242               	subwf	___lldiv@dividend,w
+  1815     0467                     u455:
+  1816     0467  1C03               	skipc
+  1817     0468  2C6A               	goto	u451
+  1818     0469  2C6B               	goto	u450
+  1819     046A                     u451:
+  1820     046A  2C7A               	goto	l925
+  1821     046B                     u450:
+  1822     046B                     l921:
+  1823     046B  083E               	movf	___lldiv@divisor,w
+  1824     046C  02C2               	subwf	___lldiv@dividend,f
+  1825     046D  083F               	movf	___lldiv@divisor+1,w
+  1826     046E  1C03               	skipc
+  1827     046F  0F3F               	incfsz	___lldiv@divisor+1,w
+  1828     0470  02C3               	subwf	___lldiv@dividend+1,f
+  1829     0471  0840               	movf	___lldiv@divisor+2,w
+  1830     0472  1C03               	skipc
+  1831     0473  0F40               	incfsz	___lldiv@divisor+2,w
+  1832     0474  02C4               	subwf	___lldiv@dividend+2,f
+  1833     0475  0841               	movf	___lldiv@divisor+3,w
+  1834     0476  1C03               	skipc
+  1835     0477  0F41               	incfsz	___lldiv@divisor+3,w
+  1836     0478  02C5               	subwf	___lldiv@dividend+3,f
+  1837     0479                     l923:
+  1838     0479  1446               	bsf	___lldiv@quotient,0
+  1839     047A                     l925:
+  1840     047A  3001               	movlw	1
+  1841     047B                     u465:
+  1842     047B  1003               	clrc
+  1843     047C  0CC1               	rrf	___lldiv@divisor+3,f
+  1844     047D  0CC0               	rrf	___lldiv@divisor+2,f
+  1845     047E  0CBF               	rrf	___lldiv@divisor+1,f
+  1846     047F  0CBE               	rrf	___lldiv@divisor,f
+  1847     0480  3EFF               	addlw	-1
+  1848     0481  1D03               	skipz
+  1849     0482  2C7B               	goto	u465
+  1850     0483                     l927:
+  1851     0483  3001               	movlw	1
+  1852     0484  02CA               	subwf	___lldiv@counter,f
+  1853     0485  1D03               	btfss	3,2
+  1854     0486  2C88               	goto	u471
+  1855     0487  2C89               	goto	u470
+  1856     0488                     u471:
+  1857     0488  2C50               	goto	l917
+  1858     0489                     u470:
+  1859     0489                     l929:
+  1860     0489  0849               	movf	___lldiv@quotient+3,w
+  1861     048A  00C1               	movwf	?___lldiv+3
+  1862     048B  0848               	movf	___lldiv@quotient+2,w
+  1863     048C  00C0               	movwf	?___lldiv+2
+  1864     048D  0847               	movf	___lldiv@quotient+1,w
+  1865     048E  00BF               	movwf	?___lldiv+1
+  1866     048F  0846               	movf	___lldiv@quotient,w
+  1867     0490  00BE               	movwf	?___lldiv
+  1868     0491                     l243:
+  1869     0491  0008               	return
+  1870     0492                     __end_of___lldiv:
+  1871                           
+  1872                           	psect	text5
+  1873     0318                     __ptext5:	
+  1874 ;; *************** function _lcddata *****************
+  1875 ;; Defined at:
+  1876 ;;		line 159 in file "taskadcpwm.c"
+  1877 ;; Parameters:    Size  Location     Type
+  1878 ;;  i               1    wreg     unsigned char 
+  1879 ;; Auto vars:     Size  Location     Type
+  1880 ;;  i               1    2[COMMON] unsigned char 
+  1881 ;; Return value:  Size  Location     Type
+  1882 ;;                  1    wreg      void 
+  1883 ;; Registers used:
+  1884 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+  1885 ;; Tracked objects:
+  1886 ;;		On entry : 0/0
+  1887 ;;		On exit  : 0/0
+  1888 ;;		Unchanged: 0/0
+  1889 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1890 ;;      Params:         0       0       0       0       0
+  1891 ;;      Locals:         1       0       0       0       0
+  1892 ;;      Temps:          0       0       0       0       0
+  1893 ;;      Totals:         1       0       0       0       0
+  1894 ;;Total ram usage:        1 bytes
+  1895 ;; Hardware stack levels used: 1
+  1896 ;; Hardware stack levels required when called: 1
+  1897 ;; This function calls:
+  1898 ;;		_delay
+  1899 ;; This function is called by:
+  1900 ;;		_main
+  1901 ;; This function uses a non-reentrant model
+  1902 ;;
+  1903                           
+  1904     0318                     _lcddata:	
+  1905                           ;psect for function _lcddata
+  1906                           
+  1907                           
+  1908                           ;incstack = 0
+  1909                           ; Regs used in _lcddata: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+  1910                           ;lcddata@i stored from wreg
+  1911     0318  00F2               	movwf	lcddata@i
+  1912     0319                     l975:
+  1913                           
+  1914                           ;taskadcpwm.c: 159: void lcddata(unsigned char i);taskadcpwm.c: 160: {;taskadcpwm.c: 161
+      +                          :     PORTC|=0x08;
+  1915     0319  1283               	bcf	3,5	;RP0=0, select bank0
+  1916     031A  1303               	bcf	3,6	;RP1=0, select bank0
+  1917     031B  1587               	bsf	7,3	;volatile
+  1918     031C                     l977:
+  1919                           
+  1920                           ;taskadcpwm.c: 162:     PORTD=i;
+  1921     031C  0872               	movf	lcddata@i,w
+  1922     031D  0088               	movwf	8	;volatile
+  1923     031E                     l979:
+  1924                           
+  1925                           ;taskadcpwm.c: 163:     PORTC|=0x01;
+  1926     031E  1407               	bsf	7,0	;volatile
+  1927     031F                     l981:
+  1928                           
+  1929                           ;taskadcpwm.c: 164:     PORTC&=~0x01;
+  1930     031F  30FE               	movlw	254
+  1931     0320  00FF               	movwf	btemp+1
+  1932     0321  087F               	movf	btemp+1,w
+  1933     0322  0587               	andwf	7,f	;volatile
+  1934     0323                     l983:
+  1935                           
+  1936                           ;taskadcpwm.c: 165:     delay(100);
+  1937     0323  3064               	movlw	100
+  1938     0324  00F0               	movwf	delay@delaycount
+  1939     0325  3000               	movlw	0
+  1940     0326  00F1               	movwf	delay@delaycount+1
+  1941     0327  120A  118A  22E4  120A  118A  	fcall	_delay
+  1942     032C                     l115:
+  1943     032C  0008               	return
+  1944     032D                     __end_of_lcddata:
+  1945                           
+  1946                           	psect	text6
+  1947     038B                     __ptext6:	
+  1948 ;; *************** function _init *****************
+  1949 ;; Defined at:
+  1950 ;;		line 84 in file "taskadcpwm.c"
+  1951 ;; Parameters:    Size  Location     Type
+  1952 ;;		None
+  1953 ;; Auto vars:     Size  Location     Type
+  1954 ;;		None
+  1955 ;; Return value:  Size  Location     Type
+  1956 ;;                  1    wreg      void 
+  1957 ;; Registers used:
+  1958 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+  1959 ;; Tracked objects:
+  1960 ;;		On entry : 0/0
+  1961 ;;		On exit  : 0/0
+  1962 ;;		Unchanged: 0/0
+  1963 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1964 ;;      Params:         0       0       0       0       0
+  1965 ;;      Locals:         0       0       0       0       0
+  1966 ;;      Temps:          0       0       0       0       0
+  1967 ;;      Totals:         0       0       0       0       0
+  1968 ;;Total ram usage:        0 bytes
+  1969 ;; Hardware stack levels used: 1
+  1970 ;; Hardware stack levels required when called: 2
+  1971 ;; This function calls:
+  1972 ;;		_delay
+  1973 ;;		_lcdcmd
+  1974 ;; This function is called by:
+  1975 ;;		_main
+  1976 ;; This function uses a non-reentrant model
+  1977 ;;
+  1978                           
+  1979     038B                     _init:	
+  1980                           ;psect for function _init
+  1981                           
+  1982     038B                     l955:	
+  1983                           ;incstack = 0
+  1984                           ; Regs used in _init: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+  1985                           
+  1986                           
+  1987                           ;taskadcpwm.c: 86:     TRISA=0x05;
+  1988     038B  3005               	movlw	5
+  1989     038C  1683               	bsf	3,5	;RP0=1, select bank1
+  1990     038D  1303               	bcf	3,6	;RP1=0, select bank1
+  1991     038E  0085               	movwf	5	;volatile
+  1992     038F                     l957:
+  1993                           
+  1994                           ;taskadcpwm.c: 87:     TRISC=0x00;
+  1995     038F  0187               	clrf	7	;volatile
+  1996     0390                     l959:
+  1997                           
+  1998                           ;taskadcpwm.c: 88:     TRISD=0x00;
+  1999     0390  0188               	clrf	8	;volatile
+  2000                           
+  2001                           ;taskadcpwm.c: 89:     ADCON0=0x81;
+  2002     0391  3081               	movlw	129
+  2003     0392  1283               	bcf	3,5	;RP0=0, select bank0
+  2004     0393  1303               	bcf	3,6	;RP1=0, select bank0
+  2005     0394  009F               	movwf	31	;volatile
+  2006                           
+  2007                           ;taskadcpwm.c: 90:     ADCON1=0x82;
+  2008     0395  3082               	movlw	130
+  2009     0396  1683               	bsf	3,5	;RP0=1, select bank1
+  2010     0397  1303               	bcf	3,6	;RP1=0, select bank1
+  2011     0398  009F               	movwf	31	;volatile
+  2012                           
+  2013                           ;taskadcpwm.c: 91:     CCP1CON=0x3C;
+  2014     0399  303C               	movlw	60
+  2015     039A  1283               	bcf	3,5	;RP0=0, select bank0
+  2016     039B  1303               	bcf	3,6	;RP1=0, select bank0
+  2017     039C  0097               	movwf	23	;volatile
+  2018                           
+  2019                           ;taskadcpwm.c: 92:     CCPR1L=0x2E;
+  2020     039D  302E               	movlw	46
+  2021     039E  0095               	movwf	21	;volatile
+  2022                           
+  2023                           ;taskadcpwm.c: 93:     T2CON=0x06;
+  2024     039F  3006               	movlw	6
+  2025     03A0  0092               	movwf	18	;volatile
+  2026                           
+  2027                           ;taskadcpwm.c: 94:     PR2=0x05E;
+  2028     03A1  305E               	movlw	94
+  2029     03A2  1683               	bsf	3,5	;RP0=1, select bank1
+  2030     03A3  1303               	bcf	3,6	;RP1=0, select bank1
+  2031     03A4  0092               	movwf	18	;volatile
+  2032     03A5                     l961:
+  2033                           
+  2034                           ;taskadcpwm.c: 95:     lcdcmd(0x30);
+  2035     03A5  3030               	movlw	48
+  2036     03A6  120A  118A  232D  120A  118A  	fcall	_lcdcmd
+  2037     03AB                     l963:
+  2038                           
+  2039                           ;taskadcpwm.c: 96:     delay(100);
+  2040     03AB  3064               	movlw	100
+  2041     03AC  00F0               	movwf	delay@delaycount
+  2042     03AD  3000               	movlw	0
+  2043     03AE  00F1               	movwf	delay@delaycount+1
+  2044     03AF  120A  118A  22E4  120A  118A  	fcall	_delay
+  2045     03B4                     l965:
+  2046                           
+  2047                           ;taskadcpwm.c: 97:     lcdcmd(0x30);
+  2048     03B4  3030               	movlw	48
+  2049     03B5  120A  118A  232D  120A  118A  	fcall	_lcdcmd
+  2050     03BA                     l967:
+  2051                           
+  2052                           ;taskadcpwm.c: 98:     delay(100);
+  2053     03BA  3064               	movlw	100
+  2054     03BB  00F0               	movwf	delay@delaycount
+  2055     03BC  3000               	movlw	0
+  2056     03BD  00F1               	movwf	delay@delaycount+1
+  2057     03BE  120A  118A  22E4  120A  118A  	fcall	_delay
+  2058     03C3                     l969:
+  2059                           
+  2060                           ;taskadcpwm.c: 99:     lcdcmd(0x30);
+  2061     03C3  3030               	movlw	48
+  2062     03C4  120A  118A  232D  120A  118A  	fcall	_lcdcmd
+  2063     03C9                     l971:
+  2064                           
+  2065                           ;taskadcpwm.c: 100:     lcdcmd(0x38);
+  2066     03C9  3038               	movlw	56
+  2067     03CA  120A  118A  232D  120A  118A  	fcall	_lcdcmd
+  2068     03CF                     l973:
+  2069                           
+  2070                           ;taskadcpwm.c: 101:     lcdcmd(0x0C);
+  2071     03CF  300C               	movlw	12
+  2072     03D0  120A  118A  232D  120A  118A  	fcall	_lcdcmd
+  2073     03D5                     l97:
+  2074     03D5  0008               	return
+  2075     03D6                     __end_of_init:
+  2076                           
+  2077                           	psect	text7
+  2078     032D                     __ptext7:	
+  2079 ;; *************** function _lcdcmd *****************
+  2080 ;; Defined at:
+  2081 ;;		line 150 in file "taskadcpwm.c"
+  2082 ;; Parameters:    Size  Location     Type
+  2083 ;;  i               1    wreg     unsigned char 
+  2084 ;; Auto vars:     Size  Location     Type
+  2085 ;;  i               1    2[COMMON] unsigned char 
+  2086 ;; Return value:  Size  Location     Type
+  2087 ;;                  1    wreg      void 
+  2088 ;; Registers used:
+  2089 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+  2090 ;; Tracked objects:
+  2091 ;;		On entry : 0/0
+  2092 ;;		On exit  : 0/0
+  2093 ;;		Unchanged: 0/0
+  2094 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  2095 ;;      Params:         0       0       0       0       0
+  2096 ;;      Locals:         1       0       0       0       0
+  2097 ;;      Temps:          0       0       0       0       0
+  2098 ;;      Totals:         1       0       0       0       0
+  2099 ;;Total ram usage:        1 bytes
+  2100 ;; Hardware stack levels used: 1
+  2101 ;; Hardware stack levels required when called: 1
+  2102 ;; This function calls:
+  2103 ;;		_delay
+  2104 ;; This function is called by:
+  2105 ;;		_main
+  2106 ;;		_init
+  2107 ;; This function uses a non-reentrant model
+  2108 ;;
+  2109                           
+  2110     032D                     _lcdcmd:	
+  2111                           ;psect for function _lcdcmd
+  2112                           
+  2113                           
+  2114                           ;incstack = 0
+  2115                           ; Regs used in _lcdcmd: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+  2116                           ;lcdcmd@i stored from wreg
+  2117     032D  00F2               	movwf	lcdcmd@i
+  2118     032E                     l897:
+  2119                           
+  2120                           ;taskadcpwm.c: 150: void lcdcmd(unsigned char i);taskadcpwm.c: 151: {;taskadcpwm.c: 152:
+      +                               PORTC&=~0x08;
+  2121     032E  30F7               	movlw	247
+  2122     032F  00FF               	movwf	btemp+1
+  2123     0330  087F               	movf	btemp+1,w
+  2124     0331  1283               	bcf	3,5	;RP0=0, select bank0
+  2125     0332  1303               	bcf	3,6	;RP1=0, select bank0
+  2126     0333  0587               	andwf	7,f	;volatile
+  2127     0334                     l899:
+  2128                           
+  2129                           ;taskadcpwm.c: 153:     PORTD=i;
+  2130     0334  0872               	movf	lcdcmd@i,w
+  2131     0335  0088               	movwf	8	;volatile
+  2132     0336                     l901:
+  2133                           
+  2134                           ;taskadcpwm.c: 154:     PORTC|=0x01;
+  2135     0336  1407               	bsf	7,0	;volatile
+  2136     0337                     l903:
+  2137                           
+  2138                           ;taskadcpwm.c: 155:     PORTC&=~0x01;
+  2139     0337  30FE               	movlw	254
+  2140     0338  00FF               	movwf	btemp+1
+  2141     0339  087F               	movf	btemp+1,w
+  2142     033A  0587               	andwf	7,f	;volatile
+  2143     033B                     l905:
+  2144                           
+  2145                           ;taskadcpwm.c: 156:     delay(100);
+  2146     033B  3064               	movlw	100
+  2147     033C  00F0               	movwf	delay@delaycount
+  2148     033D  3000               	movlw	0
+  2149     033E  00F1               	movwf	delay@delaycount+1
+  2150     033F  120A  118A  22E4  120A  118A  	fcall	_delay
+  2151     0344                     l112:
+  2152     0344  0008               	return
+  2153     0345                     __end_of_lcdcmd:
+  2154                           
+  2155                           	psect	text8
+  2156     02E4                     __ptext8:	
+  2157 ;; *************** function _delay *****************
+  2158 ;; Defined at:
+  2159 ;;		line 168 in file "taskadcpwm.c"
+  2160 ;; Parameters:    Size  Location     Type
+  2161 ;;  delaycount      2    0[COMMON] unsigned int 
+  2162 ;; Auto vars:     Size  Location     Type
+  2163 ;;		None
+  2164 ;; Return value:  Size  Location     Type
+  2165 ;;                  1    wreg      void 
+  2166 ;; Registers used:
+  2167 ;;		wreg, status,2, status,0
+  2168 ;; Tracked objects:
+  2169 ;;		On entry : 0/0
+  2170 ;;		On exit  : 0/0
+  2171 ;;		Unchanged: 0/0
+  2172 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  2173 ;;      Params:         2       0       0       0       0
+  2174 ;;      Locals:         0       0       0       0       0
+  2175 ;;      Temps:          0       0       0       0       0
+  2176 ;;      Totals:         2       0       0       0       0
+  2177 ;;Total ram usage:        2 bytes
+  2178 ;; Hardware stack levels used: 1
+  2179 ;; This function calls:
+  2180 ;;		Nothing
+  2181 ;; This function is called by:
+  2182 ;;		_main
+  2183 ;;		_init
+  2184 ;;		_lcdcmd
+  2185 ;;		_lcddata
+  2186 ;; This function uses a non-reentrant model
+  2187 ;;
+  2188                           
+  2189     02E4                     _delay:	
+  2190                           ;psect for function _delay
+  2191                           
+  2192     02E4                     l893:	
+  2193                           ;incstack = 0
+  2194                           ; Regs used in _delay: [wreg+status,2+status,0]
+  2195                           
+  2196     02E4                     l895:	
+  2197                           ;taskadcpwm.c: 168: void delay(unsigned int delaycount);taskadcpwm.c: 169: {;taskadcpwm.
+      +                          c: 170:     while(--delaycount);
+  2198                           
+  2199     02E4  3001               	movlw	1
+  2200     02E5  02F0               	subwf	delay@delaycount,f
+  2201     02E6  3000               	movlw	0
+  2202     02E7  1C03               	skipc
+  2203     02E8  03F1               	decf	delay@delaycount+1,f
+  2204     02E9  02F1               	subwf	delay@delaycount+1,f
+  2205     02EA  0870               	movf	delay@delaycount,w
+  2206     02EB  0471               	iorwf	delay@delaycount+1,w
+  2207     02EC  1D03               	btfss	3,2
+  2208     02ED  2AEF               	goto	u401
+  2209     02EE  2AF0               	goto	u400
+  2210     02EF                     u401:
+  2211     02EF  2AE4               	goto	l895
+  2212     02F0                     u400:
+  2213     02F0                     l121:
+  2214     02F0  0008               	return
+  2215     02F1                     __end_of_delay:
+  2216                           
+  2217                           	psect	text9
+  2218     0345                     __ptext9:	
+  2219 ;; *************** function ___lmul *****************
+  2220 ;; Defined at:
+  2221 ;;		line 15 in file "C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\Umul32.c"
+  2222 ;; Parameters:    Size  Location     Type
+  2223 ;;  multiplier      4    0[COMMON] unsigned long 
+  2224 ;;  multiplicand    4    4[COMMON] unsigned long 
+  2225 ;; Auto vars:     Size  Location     Type
+  2226 ;;  product         4    9[COMMON] unsigned long 
+  2227 ;; Return value:  Size  Location     Type
+  2228 ;;                  4    0[COMMON] unsigned long 
+  2229 ;; Registers used:
+  2230 ;;		wreg, status,2, status,0
+  2231 ;; Tracked objects:
+  2232 ;;		On entry : 0/0
+  2233 ;;		On exit  : 0/0
+  2234 ;;		Unchanged: 0/0
+  2235 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  2236 ;;      Params:         8       0       0       0       0
+  2237 ;;      Locals:         4       0       0       0       0
+  2238 ;;      Temps:          1       0       0       0       0
+  2239 ;;      Totals:        13       0       0       0       0
+  2240 ;;Total ram usage:       13 bytes
+  2241 ;; Hardware stack levels used: 1
+  2242 ;; This function calls:
+  2243 ;;		Nothing
+  2244 ;; This function is called by:
+  2245 ;;		_main
+  2246 ;; This function uses a non-reentrant model
+  2247 ;;
+  2248                           
+  2249     0345                     ___lmul:	
+  2250                           ;psect for function ___lmul
+  2251                           
+  2252     0345                     l1017:	
+  2253                           ;incstack = 0
+  2254                           ; Regs used in ___lmul: [wreg+status,2+status,0]
+  2255                           
+  2256     0345  3000               	movlw	0
+  2257     0346  00FC               	movwf	___lmul@product+3
+  2258     0347  3000               	movlw	0
+  2259     0348  00FB               	movwf	___lmul@product+2
+  2260     0349  3000               	movlw	0
+  2261     034A  00FA               	movwf	___lmul@product+1
+  2262     034B  3000               	movlw	0
+  2263     034C  00F9               	movwf	___lmul@product
+  2264     034D                     l1019:
+  2265     034D  1C70               	btfss	___lmul@multiplier,0
+  2266     034E  2B50               	goto	u601
+  2267     034F  2B51               	goto	u600
+  2268     0350                     u601:
+  2269     0350  2B68               	goto	l1023
+  2270     0351                     u600:
+  2271     0351                     l1021:
+  2272     0351  0874               	movf	___lmul@multiplicand,w
+  2273     0352  07F9               	addwf	___lmul@product,f
+  2274     0353  0875               	movf	___lmul@multiplicand+1,w
+  2275     0354  1103               	clrz
+  2276     0355  1803               	skipnc
+  2277     0356  3E01               	addlw	1
+  2278     0357  1903               	skipnz
+  2279     0358  2B5A               	goto	u611
+  2280     0359  07FA               	addwf	___lmul@product+1,f
+  2281     035A                     u611:
+  2282     035A  0876               	movf	___lmul@multiplicand+2,w
+  2283     035B  1103               	clrz
+  2284     035C  1803               	skipnc
+  2285     035D  3E01               	addlw	1
+  2286     035E  1903               	skipnz
+  2287     035F  2B61               	goto	u612
+  2288     0360  07FB               	addwf	___lmul@product+2,f
+  2289     0361                     u612:
+  2290     0361  0877               	movf	___lmul@multiplicand+3,w
+  2291     0362  1103               	clrz
+  2292     0363  1803               	skipnc
+  2293     0364  3E01               	addlw	1
+  2294     0365  1903               	skipnz
+  2295     0366  2B68               	goto	u613
+  2296     0367  07FC               	addwf	___lmul@product+3,f
+  2297     0368                     u613:
+  2298     0368                     l1023:
+  2299     0368  3001               	movlw	1
+  2300     0369  00F8               	movwf	??___lmul
+  2301     036A                     u625:
+  2302     036A  1003               	clrc
+  2303     036B  0DF4               	rlf	___lmul@multiplicand,f
+  2304     036C  0DF5               	rlf	___lmul@multiplicand+1,f
+  2305     036D  0DF6               	rlf	___lmul@multiplicand+2,f
+  2306     036E  0DF7               	rlf	___lmul@multiplicand+3,f
+  2307     036F  0BF8               	decfsz	??___lmul,f
+  2308     0370  2B6A               	goto	u625
+  2309     0371                     l1025:
+  2310     0371  3001               	movlw	1
+  2311     0372                     u635:
+  2312     0372  1003               	clrc
+  2313     0373  0CF3               	rrf	___lmul@multiplier+3,f
+  2314     0374  0CF2               	rrf	___lmul@multiplier+2,f
+  2315     0375  0CF1               	rrf	___lmul@multiplier+1,f
+  2316     0376  0CF0               	rrf	___lmul@multiplier,f
+  2317     0377  3EFF               	addlw	-1
+  2318     0378  1D03               	skipz
+  2319     0379  2B72               	goto	u635
+  2320     037A  0873               	movf	___lmul@multiplier+3,w
+  2321     037B  0472               	iorwf	___lmul@multiplier+2,w
+  2322     037C  0471               	iorwf	___lmul@multiplier+1,w
+  2323     037D  0470               	iorwf	___lmul@multiplier,w
+  2324     037E  1D03               	skipz
+  2325     037F  2B81               	goto	u641
+  2326     0380  2B82               	goto	u640
+  2327     0381                     u641:
+  2328     0381  2B4D               	goto	l1019
+  2329     0382                     u640:
+  2330     0382                     l1027:
+  2331     0382  087C               	movf	___lmul@product+3,w
+  2332     0383  00F3               	movwf	?___lmul+3
+  2333     0384  087B               	movf	___lmul@product+2,w
+  2334     0385  00F2               	movwf	?___lmul+2
+  2335     0386  087A               	movf	___lmul@product+1,w
+  2336     0387  00F1               	movwf	?___lmul+1
+  2337     0388  0879               	movf	___lmul@product,w
+  2338     0389  00F0               	movwf	?___lmul
+  2339     038A                     l221:
+  2340     038A  0008               	return
+  2341     038B                     __end_of___lmul:
+  2342     007E                     btemp	set	126	;btemp
+  2343     007E                     wtemp0	set	126
+  2344                           
+  2345                           	psect	config
+  2346                           
+  2347                           ;Config register CONFIG @ 0x2007
+  2348                           ;	Oscillator Selection bits
+  2349                           ;	FOSC = EXTRC, RC oscillator
+  2350                           ;	Watchdog Timer Enable bit
+  2351                           ;	WDTE = OFF, WDT disabled
+  2352                           ;	Power-up Timer Enable bit
+  2353                           ;	PWRTE = OFF, PWRT disabled
+  2354                           ;	Brown-out Reset Enable bit
+  2355                           ;	BOREN = OFF, BOR disabled
+  2356                           ;	Low-Voltage (Single-Supply) In-Circuit Serial Programming Enable bit
+  2357                           ;	LVP = OFF, RB3 is digital I/O, HV on MCLR must be used for programming
+  2358                           ;	Data EEPROM Memory Code Protection bit
+  2359                           ;	CPD = OFF, Data EEPROM code protection off
+  2360                           ;	Flash Program Memory Write Enable bits
+  2361                           ;	WRT = OFF, Write protection off; all program memory may be written to by EECON control
+  2362                           ;	In-Circuit Debugger Mode bit
+  2363                           ;	DEBUG = 0x1, unprogrammed default
+  2364                           ;	Flash Program Memory Code Protection bit
+  2365                           ;	CP = OFF, Code protection off
+  2366     2007                     	org	8199
+  2367     2007  3F3B               	dw	16187
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        20
+    BSS         40
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14     14      14
+    BANK0            80     25      75
+    BANK1            80      0      10
+    BANK3            96      0       0
+    BANK2            96      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    _main->___lldiv
+    _lcdoutput2->___lldiv
+    _lcdoutput1->___lldiv
+    ___lldiv->___lmul
+    _lcddata->_delay
+    _init->_lcdcmd
+    _lcdcmd->_delay
+
+Critical Paths under _main in BANK0
+
+    _main->_lcdoutput1
+    _main->_lcdoutput2
+    _lcdoutput2->___lldiv
+    _lcdoutput1->___lldiv
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 8     8      0    8986
+                                             17 BANK0      8     8      0
+                            ___lldiv
+                             ___lmul
+                              _delay
+                               _init
+                             _lcdcmd
+                            _lcddata
+                         _lcdoutput1
+                         _lcdoutput2
+ ---------------------------------------------------------------------------------
+ (1) _lcdoutput2                                           4     0      4    2530
+                                             13 BANK0      4     0      4
+                            ___lldiv
+                            ___llmod
+ ---------------------------------------------------------------------------------
+ (1) _lcdoutput1                                           4     0      4    2530
+                                             13 BANK0      4     0      4
+                            ___lldiv
+                            ___llmod
+ ---------------------------------------------------------------------------------
+ (2) ___llmod                                             10     2      8    1071
+                                              0 COMMON    10     2      8
+ ---------------------------------------------------------------------------------
+ (2) ___lldiv                                             14     6      8    1226
+                                             13 COMMON     1     1      0
+                                              0 BANK0     13     5      8
+                             ___lmul (ARG)
+ ---------------------------------------------------------------------------------
+ (1) _lcddata                                              1     1      0     500
+                                              2 COMMON     1     1      0
+                              _delay
+ ---------------------------------------------------------------------------------
+ (1) _init                                                 0     0      0     978
+                              _delay
+                             _lcdcmd
+ ---------------------------------------------------------------------------------
+ (1) _lcdcmd                                               1     1      0     500
+                                              2 COMMON     1     1      0
+                              _delay
+ ---------------------------------------------------------------------------------
+ (2) _delay                                                2     0      2     478
+                                              0 COMMON     2     0      2
+ ---------------------------------------------------------------------------------
+ (1) ___lmul                                              13     5      8     244
+                                              0 COMMON    13     5      8
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   ___lldiv
+     ___lmul (ARG)
+   ___lmul
+   _delay
+   _init
+     _delay
+     _lcdcmd
+       _delay
+   _lcdcmd
+   _lcddata
+     _delay
+   _lcdoutput1
+     ___lldiv
+     ___llmod
+   _lcdoutput2
+     ___lldiv
+     ___llmod
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BANK3               60      0       0       9        0.0%
+BITBANK3            60      0       0       8        0.0%
+SFR3                 0      0       0       4        0.0%
+BITSFR3              0      0       0       4        0.0%
+BANK2               60      0       0      11        0.0%
+BITBANK2            60      0       0      10        0.0%
+SFR2                 0      0       0       5        0.0%
+BITSFR2              0      0       0       5        0.0%
+BANK1               50      0       A       7       12.5%
+BITBANK1            50      0       0       6        0.0%
+SFR1                 0      0       0       2        0.0%
+BITSFR1              0      0       0       2        0.0%
+BANK0               50     19      4B       5       93.8%
+BITBANK0            50      0       0       4        0.0%
+SFR0                 0      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+COMMON               E      E       E       1      100.0%
+BITCOMMON            E      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+DATA                 0      0      63      12        0.0%
+ABS                  0      0      63       3        0.0%
+NULL                 0      0       0       0        0.0%
+STACK                0      0       0       2        0.0%
+EEDATA             100      0       0       0        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.45 build 20230818022343 
+Symbol Table                                                                                   Fri Jan 26 10:30:04 2024
+
+                      _a 0061                        _b 0057                        _c 0030  
+                      _j 003C                        _k 00A0                        _l 002C  
+                      _m 0036                        _n 003D                        _o 0028  
+                      pc 0002                       l74 0622                       l83 06D5  
+                     l97 03D5                       _fr 0032                       fsr 0004  
+                    l103 0553                      l112 0344                      l121 02F0  
+                    l115 032C                      l221 038A                      l109 0615  
+                    l243 0491                      l437 0429                      l901 0336  
+                    l903 0337                      l911 043F                      l905 033B  
+                    l921 046B                      l913 0448                      l923 0479  
+                    l915 044C                      l907 042A                      l925 047A  
+                    l917 0450                      l909 043C                      l941 03EE  
+                    l933 03D6                      l927 0483                      l919 0459  
+                    l943 03F2                      l935 03DE                      l951 0421  
+                    l961 03A5                      l929 0489                      l945 0404  
+                    l937 03E1                      l971 03C9                      l963 03AB  
+                    l955 038B                      l947 0412                      l939 03EA  
+                    l893 02E4                      l973 03CF                      l965 03B4  
+                    l957 038F                      l981 031F                      l949 041B  
+                    l895 02E4                      l967 03BA                      l959 0390  
+                    l983 0323                      l975 0319                      l991 0543  
+                    l897 032E                      l969 03C3                      l977 031C  
+                    l993 0545                      l985 0492                      l899 0334  
+                    l979 031E                      l995 054A                      l987 053C  
+                    l997 054C                      l989 053E                      l999 0551  
+                    u400 02F0                      u401 02EF                      u410 043C  
+                    u411 043B                      u500 03F2                      u501 03F1  
+                    u430 0450                      u510 0404                      _PR2 0092  
+                    u431 044F                      u511 0403                      u600 0351  
+                    u601 0350                      u425 0441                      u450 046B  
+                    u530 0421                      u611 035A                      u451 046A  
+                    u531 0420                      u515 0400                      u612 0361  
+                    u540 0543                      u700 06C8                      u613 0368  
+                    u445 0452                      u525 0413                      u541 0542  
+                    u701 06C7                      u470 0489                      u550 054A  
+                    u710 06D9                      u471 0488                      u455 0467  
+                    u551 0549                      u711 06D8                      u640 0382  
+                    u480 03DE                      u560 0551                      u720 06FD  
+                    u641 0381                      u625 036A                      u465 047B  
+                    u481 03DD                      u561 0550                      u570 0605  
+                    u730 0707                      u650 0626                      u635 0372  
+                    u571 0604                      u731 0708                      u651 0625  
+                    u580 060C                      u740 073D                      u732 070D  
+                    u660 064A                      u581 060B                      u741 073C  
+                    u733 070E                      u725 06F8                      u590 0613  
+                    u750 0790                      u670 0654                      u495 03E3  
+                    u591 0612                      u671 0655                      u680 068A  
+                    u672 065A                      u681 0689                      u673 065B  
+                    u665 0645                      u770 07AE                      u690 06A5  
+                    u771 07AD                      u755 078B                      u691 06A4  
+                    u780 07D1                      u781 07D0                      u765 0799  
+                    fsr0 0004                      indf 0000                     l1001 0554  
+                   l1011 060C                     l1003 05FE                     l1021 0351  
+                   l1013 060E                     l1005 0600                     l1101 0795  
+                   l1023 0368                     l1015 0613                     l1007 0605  
+                   l1111 07AE                     l1103 07A2                     l1031 0616  
+                   l1025 0371                     l1017 0345                     l1009 0607  
+                   l1113 07B8                     l1041 0667                     l1033 061B  
+                   l1027 0382                     l1019 034D                     l1115 07C2  
+                   l1051 067B                     l1043 066D                     l1035 0621  
+                   l1117 07CA                     l1109 07A4                     l1053 0683  
+                   l1037 0626                     l1119 07D1                     l1071 06C1  
+                   l1063 069B                     l1055 068A                     l1039 0638  
+                   l1081 06EB                     l1073 06C8                     l1065 06A5  
+                   l1057 0697                     l1049 0671                     l1091 0724  
+                   l1083 071A                     l1075 06D1                     l1067 06AF  
+                   l1093 072E                     l1085 0720                     l1077 06D4  
+                   l1069 06B9                     l1095 0736                     l1079 06D9  
+                   l1097 073D                     l1099 0780                     _main 0616  
+                   _init 038B                     btemp 007E                     start 0000  
+                  ?_main 0070                    ?_init 0070          __end_of___lldiv 0492  
+        __end_of___llmod 042A                    _T2CON 0012                    _PORTC 0007  
+                  _PORTD 0008                    _TRISA 0085                    _TRISC 0087  
+                  _TRISD 0088      ___lmul@multiplicand 0074          __end_of_lcddata 032D  
+                  _delay 02E4                    _value 0024                    pclath 000A  
+                  status 0003                    wtemp0 007E              lcdoutput1@i 004B  
+            lcdoutput2@i 004B          __initialization 07DE             __end_of_main 07DE  
+           __end_of_init 03D6                   ??_main 004F                   ??_init 0073  
+                 ?_delay 0070                   _ADCON0 001F                   _ADCON1 009F  
+       ___llmod@dividend 0074                   _ADRESH 001E                   _ADRESL 009E  
+                 _CCPR1L 0015                   ___lmul 0345                ??___lldiv 007D  
+              ??___llmod 0078                   _lcdcmd 032D                ??_lcddata 0072  
+__end_of__initialization 07FC           __pcstackCOMMON 0070             __pidataBANK0 0304  
+          __end_of_delay 02F1                  ??_delay 0072               __pbssBANK0 0020  
+             __pbssBANK1 00A0               _delaycount 0034               __pmaintext 0616  
+                ?___lmul 0070                  ?_lcdcmd 0070                  _CCP1CON 0017  
+         ___lmul@product 0079               _lcdoutput1 0492               _lcdoutput2 0554  
+                ___lldiv 042A                  ___llmod 03D6                  __ptext1 0554  
+                __ptext2 0492                  __ptext3 03D6                  __ptext4 042A  
+                __ptext5 0318                  __ptext6 038B                  __ptext7 032D  
+                __ptext8 02E4                  __ptext9 0345                  _lcddata 0318  
+                lcdcmd@i 0072                  clrloop0 02DD                  _voltage 0020  
+   end_of_initialization 07FC          ___lldiv@divisor 003E          ___lldiv@counter 004A  
+            ?_lcdoutput1 004B              ?_lcdoutput2 004B           __end_of___lmul 038B  
+         __end_of_lcdcmd 0345      start_initialization 07DE          ___llmod@divisor 0070  
+        ___llmod@counter 0079                 ??___lmul 0078               init_fetch0 02F1  
+               ??_lcdcmd 0072              __pdataBANK0 0057          delay@delaycount 0070  
+              ___latbits 0002            __pcstackBANK0 003E                 ?___lldiv 003E  
+               ?___llmod 0070                 ?_lcddata 0070                _highvalue 0038  
+              clear_ram0 02DC        ___lmul@multiplier 0070             ??_lcdoutput1 007E  
+           ??_lcdoutput2 007E       __end_of_lcdoutput1 0554       __end_of_lcdoutput2 0616  
+               _lowvalue 003A                 lcddata@i 0072                 init_ram0 02F5  
+       ___lldiv@dividend 0042         ___lldiv@quotient 0046  

@@ -1,0 +1,109 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877A ]
+[d frameptr 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"27 D:\magesh\EMBEDDED PROGRAM\MYWORK\PIC TASK AND CLASS WORK\TASK WORK\weak 4\task1\task4.X\task1.c
+[v _main main `(v  1 e 1 0 ]
+"54
+[v _init init `(v  1 e 1 0 ]
+"66
+[v _lcdoutput lcdoutput `(v  1 e 1 0 ]
+"86
+[v _lcdcmd lcdcmd `(v  1 e 1 0 ]
+"95
+[v _lcddata lcddata `(v  1 e 1 0 ]
+"278 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16Fxxx_DFP/1.4.149/xc8\pic\include\proc\pic16f877a.h
+[v _PORTC PORTC `VEuc  1 e 1 @7 ]
+"340
+[v _PORTD PORTD `VEuc  1 e 1 @8 ]
+"1437
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"1499
+[v _TRISD TRISD `VEuc  1 e 1 @136 ]
+"25 D:\magesh\EMBEDDED PROGRAM\MYWORK\PIC TASK AND CLASS WORK\TASK WORK\weak 4\task1\task4.X\task1.c
+[v _k k `[10]uc  1 e 10 0 ]
+[v _equal equal `uc  1 e 1 0 ]
+[v _plus plus `uc  1 e 1 0 ]
+[v _min min `uc  1 e 1 0 ]
+[v _n n `uc  1 e 1 0 ]
+"26
+[v _num1 num1 `ui  1 e 2 0 ]
+[v _num2 num2 `ui  1 e 2 0 ]
+[v _m m `ui  1 e 2 0 ]
+[v _sum sum `ui  1 e 2 0 ]
+"27
+[v _main main `(v  1 e 1 0 ]
+{
+"53
+} 0
+"66
+[v _lcdoutput lcdoutput `(v  1 e 1 0 ]
+{
+"68
+[v lcdoutput@j j `uc  1 a 1 13 ]
+[v lcdoutput@s s `uc  1 a 1 12 ]
+"66
+[v lcdoutput@i i `ui  1 p 2 10 ]
+"85
+} 0
+"95
+[v _lcddata lcddata `(v  1 e 1 0 ]
+{
+[v lcddata@i i `uc  1 a 1 wreg ]
+[v lcddata@i i `uc  1 a 1 wreg ]
+"97
+[v lcddata@i i `uc  1 a 1 2 ]
+"103
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"10
+[v ___lwdiv@quotient quotient `ui  1 a 2 4 ]
+"11
+[v ___lwdiv@counter counter `uc  1 a 1 6 ]
+"5
+[v ___lwdiv@divisor divisor `ui  1 p 2 0 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
+"30
+} 0
+"4 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+{
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v ___bmul@product product `uc  1 a 1 8 ]
+"4
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+[v ___bmul@multiplicand multiplicand `uc  1 p 1 7 ]
+"6
+[v ___bmul@multiplier multiplier `uc  1 a 1 9 ]
+"51
+} 0
+"54 D:\magesh\EMBEDDED PROGRAM\MYWORK\PIC TASK AND CLASS WORK\TASK WORK\weak 4\task1\task4.X\task1.c
+[v _init init `(v  1 e 1 0 ]
+{
+"65
+} 0
+"86
+[v _lcdcmd lcdcmd `(v  1 e 1 0 ]
+{
+[v lcdcmd@i i `uc  1 a 1 wreg ]
+[v lcdcmd@i i `uc  1 a 1 wreg ]
+"88
+[v lcdcmd@i i `uc  1 a 1 2 ]
+"94
+} 0

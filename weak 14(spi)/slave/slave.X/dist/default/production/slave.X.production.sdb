@@ -1,0 +1,69 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877A ]
+[d frameptr 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"5 D:\magesh\EMBEDDED PROGRAM\MYWORK\PIC TASK AND CLASS WORK\TASK WORK\weak 14(spi)\slave\slave.X\function.c
+[v _spi_intialize spi_intialize `(v  1 e 1 0 ]
+"20
+[v __ISR _ISR `II(v  1 e 1 0 ]
+"28
+[v _display display `(v  1 e 1 0 ]
+"19 D:\magesh\EMBEDDED PROGRAM\MYWORK\PIC TASK AND CLASS WORK\TASK WORK\weak 14(spi)\slave\slave.X\main.c
+[v _main main `(v  1 e 1 0 ]
+"216 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16Fxxx_DFP/1.4.149/xc8\pic\include\proc\pic16f877a.h
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"808
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
+"815
+[v _SSPCON SSPCON `VEuc  1 e 1 @20 ]
+"1325
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+"1375
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1437
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"2229
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @159 ]
+"2498
+[v _CKE CKE `VEb  1 e 0 @1190 ]
+"2573
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"2633
+[v _PEIE PEIE `VEb  1 e 0 @94 ]
+"2813
+[v _SMP SMP `VEb  1 e 0 @1191 ]
+"2825
+[v _SSPIE SSPIE `VEb  1 e 0 @1123 ]
+"2828
+[v _SSPIF SSPIF `VEb  1 e 0 @99 ]
+"4 D:\magesh\EMBEDDED PROGRAM\MYWORK\PIC TASK AND CLASS WORK\TASK WORK\weak 14(spi)\slave\slave.X\function.c
+[v _rdata rdata `i  1 e 2 0 ]
+"19 D:\magesh\EMBEDDED PROGRAM\MYWORK\PIC TASK AND CLASS WORK\TASK WORK\weak 14(spi)\slave\slave.X\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"24
+} 0
+"5 D:\magesh\EMBEDDED PROGRAM\MYWORK\PIC TASK AND CLASS WORK\TASK WORK\weak 14(spi)\slave\slave.X\function.c
+[v _spi_intialize spi_intialize `(v  1 e 1 0 ]
+{
+"18
+} 0
+"28
+[v _display display `(v  1 e 1 0 ]
+{
+"31
+} 0
+"20
+[v __ISR _ISR `II(v  1 e 1 0 ]
+{
+"27
+} 0

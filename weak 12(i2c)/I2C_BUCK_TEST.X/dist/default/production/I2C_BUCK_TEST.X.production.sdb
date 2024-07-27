@@ -1,0 +1,139 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877A ]
+[d frameptr 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"5 D:\magesh\EMBEDDED PROGRAM\MYWORK\PIC TASK AND CLASS WORK\TASK WORK\weak 12(i2c)\I2C_BUCK_TEST.X\driver_1.c
+[v _i2c_master_init i2c_master_init `(v  1 e 1 0 ]
+"13
+[v _i2c_master_start i2c_master_start `(v  1 e 1 0 ]
+"18
+[v _i2c_master_stop i2c_master_stop `(v  1 e 1 0 ]
+"23
+[v _i2c_master_wait i2c_master_wait `(v  1 e 1 0 ]
+"27
+[v _i2c_nack i2c_nack `(v  1 e 1 0 ]
+"33
+[v _i2c_master_repeatedstart i2c_master_repeatedstart `(v  1 e 1 0 ]
+"38
+[v _i2c_read_byte i2c_read_byte `(uc  1 e 1 0 ]
+"47
+[v _i2c_master_write i2c_master_write `(uc  1 e 1 0 ]
+"55
+[v _eprom_write eprom_write `(v  1 e 1 0 ]
+"65
+[v _eprom_read eprom_read `(uc  1 e 1 0 ]
+"23 D:\magesh\EMBEDDED PROGRAM\MYWORK\PIC TASK AND CLASS WORK\TASK WORK\weak 12(i2c)\I2C_BUCK_TEST.X\mian_1.c
+[v _main main `(v  1 e 1 0 ]
+"340 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16Fxxx_DFP/1.4.149/xc8\pic\include\proc\pic16f877a.h
+[v _PORTD PORTD `VEuc  1 e 1 @8 ]
+"808
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
+"815
+[v _SSPCON SSPCON `VEuc  1 e 1 @20 ]
+"1437
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"1499
+[v _TRISD TRISD `VEuc  1 e 1 @136 ]
+"1754
+[v _SSPCON2 SSPCON2 `VEuc  1 e 1 @145 ]
+"1823
+[v _SSPADD SSPADD `VEuc  1 e 1 @147 ]
+"1830
+[v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
+"2378
+[v _ACKDT ACKDT `VEb  1 e 0 @1165 ]
+"2381
+[v _ACKEN ACKEN `VEb  1 e 0 @1164 ]
+"2384
+[v _ACKSTAT ACKSTAT `VEb  1 e 0 @1166 ]
+"2828
+[v _SSPIF SSPIF `VEb  1 e 0 @99 ]
+"23 D:\magesh\EMBEDDED PROGRAM\MYWORK\PIC TASK AND CLASS WORK\TASK WORK\weak 12(i2c)\I2C_BUCK_TEST.X\mian_1.c
+[v _main main `(v  1 e 1 0 ]
+{
+"40
+} 0
+"5 D:\magesh\EMBEDDED PROGRAM\MYWORK\PIC TASK AND CLASS WORK\TASK WORK\weak 12(i2c)\I2C_BUCK_TEST.X\driver_1.c
+[v _i2c_master_init i2c_master_init `(v  1 e 1 0 ]
+{
+[v i2c_master_init@baud baud `DCul  1 p 4 0 ]
+"12
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
+"10
+[v ___lldiv@quotient quotient `ul  1 a 4 9 ]
+"11
+[v ___lldiv@counter counter `uc  1 a 1 13 ]
+"5
+[v ___lldiv@divisor divisor `ul  1 p 4 0 ]
+[v ___lldiv@dividend dividend `ul  1 p 4 4 ]
+"30
+} 0
+"55 D:\magesh\EMBEDDED PROGRAM\MYWORK\PIC TASK AND CLASS WORK\TASK WORK\weak 12(i2c)\I2C_BUCK_TEST.X\driver_1.c
+[v _eprom_write eprom_write `(v  1 e 1 0 ]
+{
+[v eprom_write@ad ad `ui  1 p 2 1 ]
+[v eprom_write@data data `uc  1 p 1 3 ]
+"64
+} 0
+"65
+[v _eprom_read eprom_read `(uc  1 e 1 0 ]
+{
+"67
+[v eprom_read@data data `uc  1 a 1 3 ]
+"65
+[v eprom_read@add add `ui  1 p 2 1 ]
+"79
+} 0
+"38
+[v _i2c_read_byte i2c_read_byte `(uc  1 e 1 0 ]
+{
+"46
+} 0
+"27
+[v _i2c_nack i2c_nack `(v  1 e 1 0 ]
+{
+"32
+} 0
+"47
+[v _i2c_master_write i2c_master_write `(uc  1 e 1 0 ]
+{
+[v i2c_master_write@data data `uc  1 a 1 wreg ]
+[v i2c_master_write@data data `uc  1 a 1 wreg ]
+"49
+[v i2c_master_write@data data `uc  1 a 1 0 ]
+"54
+} 0
+"18
+[v _i2c_master_stop i2c_master_stop `(v  1 e 1 0 ]
+{
+"22
+} 0
+"13
+[v _i2c_master_start i2c_master_start `(v  1 e 1 0 ]
+{
+"17
+} 0
+"33
+[v _i2c_master_repeatedstart i2c_master_repeatedstart `(v  1 e 1 0 ]
+{
+"37
+} 0
+"23
+[v _i2c_master_wait i2c_master_wait `(v  1 e 1 0 ]
+{
+"26
+} 0
